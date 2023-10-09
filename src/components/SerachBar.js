@@ -7,7 +7,7 @@ import ContextValue from './ContextValue'
 
 export default function SearchBar ({search, setSearch}) {
 
-    const onChangeSerchBar = useCallback((e) => setSearch(e.target.value),[search])
+    const onChangeSerchBar = useCallback((e) => setSearch(e.target.value),[])
 
     const searchBarRef = useRef()
 
