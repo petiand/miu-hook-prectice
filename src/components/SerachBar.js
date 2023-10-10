@@ -1,5 +1,5 @@
 import {TextField, Box} from '@mui/material'
-import { useCallback, useRef} from 'react'
+import { useRef } from 'react'
 
 import BaseBtn from './BaseBtn'
 import { usePokemon } from '../hooks/usePokemon'
@@ -7,7 +7,7 @@ import ContextValue from './ContextValue'
 
 export default function SearchBar ({search, setSearch}) {
 
-    const onChangeSerchBar = useCallback((e) => setSearch(e.target.value),[])
+    const onChangeSerchBar = (e) => setSearch(e.target.value)
 
     const searchBarRef = useRef()
 
@@ -36,7 +36,7 @@ export default function SearchBar ({search, setSearch}) {
                 inputRef={searchBarRef} 
                 onChange={onChangeSerchBar} 
                 id="search-bar" 
-                label="Type to Search" 
+                label="type to Search" 
                 type="search" 
             />
             <TextField 
