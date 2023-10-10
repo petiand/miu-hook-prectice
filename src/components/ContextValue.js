@@ -16,7 +16,7 @@ export default function ContextValue(props) {
                 width:220,
                 ...props}}
         >
-            Some context: {someContext.value} 
+            Global value: {someContext.value} 
         </Typography> 
         }
         </>

@@ -35,11 +35,15 @@ export default function Cards({search}) {
             justifyContent:'space-between'
             }}
         >
+            {pokemonData?.previous ? 
             <BaseBtn
             text="prev"
             onClick={onGoBack}
-                width="100px"
+                width="100px" 
             />
+            :
+            <div></div>
+            }
             <BaseBtn
             text="next"
             onClick={onGoNext}

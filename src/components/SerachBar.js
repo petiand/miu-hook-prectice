@@ -36,7 +36,7 @@ export default function SearchBar ({search, setSearch}) {
                 inputRef={searchBarRef} 
                 onChange={onChangeSerchBar} 
                 id="search-bar" 
-                label="type to Search" 
+                label="Type to Search" 
                 type="search" 
             />
             <TextField 
