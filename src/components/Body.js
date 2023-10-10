@@ -19,12 +19,12 @@ export default function Body() {
             />
             <Cards search={search}/>
             <BaseBtn
-                    text="scroll to top"
+                    text="scroll top"
                     onClick={scrollToTop}
-                    width="150px"
+                    width="120px"
                     position="fixed"
                     bottom= "20px"
-                    right= "135px"
+                    right= "45px"
                     zIndex= "1" 
                 /> 
         </>
