@@ -1,6 +1,6 @@
 import {  Card, CardContent, Paper, Typography, Grid, CardActionArea, CircularProgress  } from "@mui/material"
 import React, {useCallback, useState} from 'react'
-import useFetch from "../hooks/useFetch"
+import useGetPokemon from "../hooks/useGetPokemon"
 
 import PokeCardDetail from "./PokeCardDetail"
 import ContextValue from "./ContextValue"
@@ -8,7 +8,7 @@ import ContextValue from "./ContextValue"
 
 export default function PokeCard( {name, url}) {
 
-    const [pokemon, isLoading] = useFetch({url: url})
+    const [pokemon, isLoading] = useGetPokemon({url: url})
     
     const urlGood =  pokemon ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg` : ""
 
