@@ -1,16 +1,7 @@
 import { Box, Button, Container, Typography } from "@mui/material";
-import { useState } from "react";
 import {Link as RouterLink } from 'react-router-dom'
 
-export default function AppDescription() {
-
-    const [scrollTop, setScrollTop] = useState(0);
-
-  const handleScroll = (event) => {
-    setScrollTop(event.currentTarget.scrollTop);
-  }
-
-  console.log(scrollTop)
+export default function About() {
 
     return (
         <>
@@ -19,19 +10,15 @@ export default function AppDescription() {
             variant="outlined"
             sx={{
                 mt:10, 
-                borderColor:"#003049", 
-                color:"#003049", 
                 ml:10
                 }}
         >
          back   
         </Button>
         <Container 
-            onScroll={handleScroll}
             maxWidth="md" 
             sx={{ 
                 textAlign:"center", 
-                bgcolor:"#fdf0d5", 
                 p:5, 
                 height:"vh"
             }}

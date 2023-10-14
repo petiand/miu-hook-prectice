@@ -6,7 +6,7 @@ export default function AvatarImg(id) {
     const [imgIsLoading, setImgIsLoading] = useState(true)
     const url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id.id}.svg`
     
-    const onLoad = useCallback(() => setImgIsLoading(false), [id])
+    const onLoad = useCallback(() => setImgIsLoading(false), [])
 
     return (
         <Paper 
@@ -15,7 +15,7 @@ export default function AvatarImg(id) {
                         display:"flex",
                          width:170, 
                          height:170, 
-                         bgcolor:"#F4D590", 
+                        //  bgcolor:"#F4D590",   
                          borderRadius:"50%", 
                          alignItems:"center", 
                          justifyContent:"center"

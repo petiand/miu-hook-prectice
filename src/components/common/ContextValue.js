@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material"
-import { usePokemon } from "../hooks/usePokemon"
+import { usePokemon } from "../../hooks/usePokemon"
 
 export default function ContextValue(props) {
     
