@@ -1,20 +1,11 @@
-import { Box, Button, Container, Typography } from "@mui/material";
-import {Link as RouterLink } from 'react-router-dom'
+import { Box, Container, Typography, createStyles } from "@mui/material";
+import BackButton from "../components/common/BackButton";
 
 export default function About() {
 
     return (
         <>
-        <Button
-            component={RouterLink} to="/"
-            variant="outlined"
-            sx={{
-                mt:10, 
-                ml:10
-                }}
-        >
-         back   
-        </Button>
+        <BackButton to={"/"} />
         <Container 
             maxWidth="md" 
             sx={{ 
@@ -26,7 +17,7 @@ export default function About() {
             <Typography 
             variant="h4"> Short description of the App</Typography>
             <Box sx={{textAlign:"left", mt:3}}>
-                <Typography variant="h6"> 
+                <Typography style={styles.text} variant="h6"> 
                 The PokeCodex was built to practice react basic hooks and to familiarize with the MUI.
                 </Typography>
                 <ul>
@@ -49,3 +40,13 @@ export default function About() {
         </>
     )
 }
+
+const styles = createStyles({
+    text: {
+        textAlign: "center",
+
+    },
+    pokebox: {
+        
+    }
+})

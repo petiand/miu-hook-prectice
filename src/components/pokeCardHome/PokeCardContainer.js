@@ -6,8 +6,6 @@ import PokeCard from "../pokeCard/PokeCard";
 export default function PokeCardContainer({url}) {
 
     const [pokemon, isLoading] = useGetPokemon({url: url})
-    
-    console.log(pokemon)
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -23,8 +21,16 @@ export default function PokeCardContainer({url}) {
     const id = open ? 'simple-popover' : undefined;
 
     return (
+      <>
+      {pokemon &&
       <PokeCard
-        pokemon={pokemon} 
+        pokemon={pokemon}
+        pokemonId={pokemon.id} 
+        name={pokemon.species.name} 
+        type={pokemon.types[0].type.name} 
+        ability={pokemon.abilities[0].ability.name} 
+        height={pokemon.height} 
+        weight={pokemon.weight} 
         handleClick={handleClick} 
         id={id} 
         isLoading={isLoading} 
@@ -32,5 +38,7 @@ export default function PokeCardContainer({url}) {
         handleClose={handleClose}
         open={open}
       />
+      }
+      </>
     )
 }

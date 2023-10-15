@@ -7,8 +7,6 @@ export default function ToggleMode() {
 
     const modeContext = usePokemon()
 
-    console.log(modeContext.darkMode)
-
     function toggleTheme() {
         modeContext.setDarkMode((prev) => (!prev))
     }
@@ -16,16 +14,16 @@ export default function ToggleMode() {
     return (
         <CardActionArea 
             onClick={toggleTheme} 
-            sx={
-                {m:5, 
-                border:1, 
-                pl:1.5, 
-                borderRadius:5, 
+            sx={{ 
+                pl:1,
                 width:115, 
-                alignItems:"center"}}>
+                border:1,
+                borderRadius:5,  
+                alignItems:"center",
+                bgcolor:"#fdf0d5",
+                color:"#003049"}}>
             {modeContext.darkMode ? "darkmode" : "lightmode"}
-            <IconButton
-            >
+            <IconButton>
                 {modeContext.darkMode ? <DarkModeIcon /> : <LightModeIcon /> }
             </IconButton>
         </CardActionArea>

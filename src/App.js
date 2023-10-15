@@ -13,5 +13,8 @@ function App() {
 export default App;
 
 /* forweek2: 
-axio, async/await, error handeling
-AvatarimgComp + loadingspinner to card and avatar */
+-axio, async/await, error handeling (data fetching)
+-AvatarimgComp + loadingspinner to card and avatar
+-Global styling - theme+darkmode
+-folder structure, separeta presentational component from data managing components
+ */
