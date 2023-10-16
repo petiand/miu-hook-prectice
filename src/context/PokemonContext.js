@@ -9,9 +9,6 @@ const PokemonContext =({children}) => {
     const [darkMode, setDarkMode] = useState(false)
 
     const [favoritList, setFavoritList] = useState([])
-
-    console.log(favoritList)
-    console.log(value)
     
     return(
         <Context.Provider value={{value, setValue, darkMode, setDarkMode, favoritList, setFavoritList}}>

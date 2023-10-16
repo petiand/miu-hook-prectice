@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import useGetPokemon from "../../hooks/useGetPokemon";
 import Cards from '../pokeCard/Cards';
 import PrevNextBtn from "../common/PrevNextBtn"
@@ -14,16 +14,16 @@ export default function HomeCards({search}) {
 //familiarize in deep for global stylin in miu, hoove etc
 //separet componenet- managing+rendering
 //when search dont rerender
-    const onGoNext =  () =>{
+    const onGoNext =  useCallback(() =>{
         setCurrentUrl(pokemonData.next)
-    }
+    },[pokemonData])
 
-    const onGoBack = () =>{
+    const onGoBack = useCallback(() =>{
         setCurrentUrl(pokemonData.previous)
-    }
+    },[pokemonData])
  
     const filteredList = useMemo( () => 
-              pokemonData?.results.filter((p) => p.name.toLowerCase().includes(search.toLocaleLowerCase())), [pokemonData, search])
+              pokemonData?.results.filter((p) => p.name.toLowerCase().includes(search?.toLocaleLowerCase())), [pokemonData, search])
   
     const sorted = useMemo( () => filteredList?.toSorted((a, b) => a.name.localeCompare(b.name)), [filteredList])
     
