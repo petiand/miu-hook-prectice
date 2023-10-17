@@ -1,11 +1,21 @@
 import {TextField} from '@mui/material'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import BaseBtn from './BaseBtn'
 
-export default function SearchBar ({search, setSearch}) {
+export default function SearchBar ({setSearch}) {
 
-    const onChangeSerchBar = (e) => setSearch(e.target.value)
+    const [localSearch, setLocalSearch] = useState("")
+
+    const onChangeSerchBar = (e) => setLocalSearch(e.target.value)
+
+    useEffect(() => {
+        const searchTimeOutId = setTimeout(() => setSearch(localSearch),500)
+        return () =>
+            clearTimeout(searchTimeOutId)
+    },[localSearch])
+
+    
 
     const searchBarRef = useRef()
 
@@ -15,7 +25,7 @@ export default function SearchBar ({search, setSearch}) {
         <>
             <TextField
                 sx={{width:450, mb:5 }}
-                value={search} 
+                value={localSearch} 
                 inputRef={searchBarRef} 
                 onChange={onChangeSerchBar} 
                 id="search-bar" 

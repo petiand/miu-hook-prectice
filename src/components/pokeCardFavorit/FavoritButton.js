@@ -1,13 +1,14 @@
 import { Button, Typography } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import { useNavigate } from "react-router-dom";
+import { useCallback } from "react";
 
 export default function FavoritButton() {
   let navigate = useNavigate();
 
-  const onNavigation = () => {
+  const onNavigation = useCallback(() => {
     navigate("/favorit");
-  };
+  },[]);
 
   return (
     <Button
