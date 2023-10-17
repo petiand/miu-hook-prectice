@@ -2,16 +2,18 @@ import React, {useMemo, useState} from 'react';
 import { Box, Container, Grid,Typography } from '@mui/material';
 
 import PokeCard from "./PokeCard";
-import useFetch from "../hooks/useFetch";
+import useGetPokemon from "../hooks/useGetPokemon";
 import BaseBtn from './BaseBtn';
 
 export default function Cards({search}) {
-
+// integrete axios
     const [currentUrl, setCurrentUrl] = useState("https://pokeapi.co/api/v2/pokemon")
 
-    const [pokemonData, isLoading] = useFetch({url:currentUrl})
-
-    const onGoNext = () =>{
+    const [pokemonData, isLoading] = useGetPokemon({url:currentUrl})
+//useCalback 
+//familiarize in deep for global stylin in miu, hoove etc
+//separet componenet- managing+rendering
+    const onGoNext =  () =>{
         setCurrentUrl(pokemonData.next)
     }
 
