@@ -1,16 +1,16 @@
 import {  Card, CardContent, Paper, Typography, Grid, CardActionArea, CircularProgress  } from "@mui/material"
-import React, {useCallback, useState} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import useGetPokemon from "../hooks/useGetPokemon"
 
 import PokeCardDetail from "./PokeCardDetail"
 import ContextValue from "./ContextValue"
+import AvatarImg from "./AvatarImg"
 
 
 export default function PokeCard( {name, url}) {
 
     const [pokemon, isLoading] = useGetPokemon({url: url})
     
-    const urlGood =  pokemon ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg` : ""
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -25,6 +25,8 @@ export default function PokeCard( {name, url}) {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
  
+       
+
     return (
     <Grid item xs={4}>
         { pokemon &&
@@ -42,7 +44,7 @@ export default function PokeCard( {name, url}) {
                 borderRadius:"10px", 
                 ":hover":{boxShadow:20, scale: "1.1"}}} 
             > 
-                {isLoading ? <CircularProgress /> :
+                {isLoading ? <CircularProgress sx={{mt:15}} /> :
                 <>
                 <CardContent 
                 sx={{
@@ -50,24 +52,7 @@ export default function PokeCard( {name, url}) {
                     justifyContent:"center"
                     }}
                 >
-                    <Paper 
-                    elevation={6} 
-                    sx={{
-                        display:"flex",
-                         width:170, 
-                         height:170, 
-                         bgcolor:"#F4D590", 
-                         borderRadius:"50%", 
-                         alignItems:"center", 
-                         justifyContent:"center"
-                         }}
-                    >
-                        <img  
-                            src= {urlGood} 
-                            style={{height:115, width:115}} 
-                            alt="pokemonimg" 
-                        />
-                    </Paper>
+                {pokemon.id && <AvatarImg id={pokemon.id} />} 
                 </CardContent>
                 <CardContent 
                     sx={{textAlign:"center"}}
