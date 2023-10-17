@@ -11,7 +11,6 @@ export default function ScrollTopBtn() {
 
     const handleScroll = () => {
         setScrollTop(window.scrollY);
-        console.log(scrollTop)
     }
 
     window.addEventListener('scroll',(event) => {
@@ -20,7 +19,7 @@ export default function ScrollTopBtn() {
 
     return (
         <>
-        { scrollTop > 300 && <BaseBtn
+        { scrollTop > 450 && <BaseBtn
             text="scroll top"
             onClick={scrollToTop}
             width="120px"

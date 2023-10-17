@@ -1,9 +1,18 @@
-import {Typography, Toolbar, Link, CardActionArea} from '@mui/material'
+import {Typography, Toolbar, CardActionArea, Button, Box} from '@mui/material'
 import ContextValue from './ContextValue'
-import {Link as RouterLink } from 'react-router-dom'
+import {Link as RouterLink, useNavigate } from 'react-router-dom'
 import { pokeBall } from '../../assets/images'
+import ToggleMode from './ToggleMode'
 
 export default function Header() {
+
+    
+    let navigate = useNavigate()
+
+    const onNavigation= () => {
+        navigate("/about")
+    }
+
     return (
     <>
     <Toolbar 
@@ -47,14 +56,20 @@ export default function Header() {
             color="#003049" 
             bgcolor="#fdf0d5" 
         />
-        <Link 
-            href="/description" 
-            variant="h5" 
-            underline="none"
-            sx={{color:"#f2e8cf", mr:2, width:250, border: 1, borderColor:"#fdf0d5", p:1, borderRadius:1, textAlign:'center'}}        
+        <Box
+            sx={{
+                display:"flex"
+            }}
         >
-            {'APP DESCRIPTION'}
-        </Link> 
+            <ToggleMode />
+            <Button 
+                onClick={onNavigation} 
+                variant="h5" 
+                sx={{color:"#f2e8cf"}}        
+            >
+                {'About'}
+            </Button>
+        </Box> 
     </Toolbar>
     </>
 )}

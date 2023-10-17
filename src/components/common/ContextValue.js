@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import { usePokemon } from "../../hooks/usePokemon"
 
 export default function ContextValue(props) {
@@ -9,15 +9,17 @@ export default function ContextValue(props) {
     
     return ( <>
         {condition !== 0 &&
-        <Typography  
+        <Box
             sx={{ 
                 p:2,  
                 borderRadius:"10px",
                 width:220,
                 ...props}}
         >
+        <Typography>
             Global value: {someContext.value} 
-        </Typography> 
+        </Typography>
+        </Box> 
         }
         </>
     )
