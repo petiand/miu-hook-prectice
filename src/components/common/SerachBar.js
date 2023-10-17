@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import BaseBtn from './BaseBtn'
 
-export default function SearchBar ({search, setSearch}) {
+export default function SearchBar ({setSearch}) {
 
     const [localSearch, setLocalSearch] = useState("")
 

@@ -10,10 +10,7 @@ export default function HomeCards({search}) {
     const [currentUrl, setCurrentUrl] = useState("https://pokeapi.co/api/v2/pokemon")
 
     const [pokemonData, isLoading] = useGetPokemon({url:currentUrl})
-//useCalback 
-//familiarize in deep for global stylin in miu, hoove etc
-//separet componenet- managing+rendering
-//when search dont rerender
+
     const onGoNext =  useCallback(() =>{
         setCurrentUrl(pokemonData.next)
     },[pokemonData])
@@ -34,7 +31,9 @@ export default function HomeCards({search}) {
     if (sortedList) 
         for (const { url: sortedUrl} of sortedList){
             sortedUrlList.push(sortedUrl)
-        } 
+        }
+        
+        console.log(search)
        
     return (
         <>
