@@ -5,7 +5,7 @@ const useGetPokemon = ({url}) => {
    
     const [data, setData] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
-//forweek2: axio, async/await, error handeling
+
     useEffect( () => {
         setIsLoading(true)
         const getPokemon = async () => {

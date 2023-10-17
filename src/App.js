@@ -1,14 +1,17 @@
-
-import PokemonContext from './components/PokemonContext';
-import Screen from './components/Screen';
+import PokemonContext from './context/PokemonContext';
+import AppRoutes from './navigation/AppRoutes';
 
 function App() {
 
   return (
     <PokemonContext>
-      <Screen />
+      <AppRoutes />
     </PokemonContext>
   );
 }
 
 export default App;
+
+/* forweek2: 
+axio, async/await, error handeling
+AvatarimgComp + loadingspinner to card and avatar */

@@ -1,7 +1,7 @@
 import {Typography, Toolbar, Link, CardActionArea} from '@mui/material'
-import pokeball from "../images/pokeball.png"
 import ContextValue from './ContextValue'
 import {Link as RouterLink } from 'react-router-dom'
+import { pokeBall } from '../../assets/images'
 
 export default function Header() {
     return (
@@ -12,6 +12,8 @@ export default function Header() {
             display:'flex', 
             alignItems:"center", 
             justifyContent:'space-between',
+            border:1,
+            borderColor:'black'
             }}
     >
         <CardActionArea 
@@ -26,7 +28,7 @@ export default function Header() {
             }}
         >
             <img 
-                src={pokeball} 
+                src={pokeBall} 
                 alt="pokebalimage" 
                 style={{height:35, width:35
                 }}
@@ -49,7 +51,7 @@ export default function Header() {
             href="/description" 
             variant="h5" 
             underline="none"
-            sx={{color:"#f2e8cf", mr:2, width:220, border: 1, borderColor:"#fdf0d5", p:1, borderRadius:1, textAlign:'center'}}        
+            sx={{color:"#f2e8cf", mr:2, width:250, border: 1, borderColor:"#fdf0d5", p:1, borderRadius:1, textAlign:'center'}}        
         >
             {'APP DESCRIPTION'}
         </Link> 

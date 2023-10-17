@@ -14,7 +14,7 @@ export default function PokeCardDetail({pokemon, anchorEl, handleClose,id, open}
         anchorEl={anchorEl}
         onClose={handleClose}
         >
-        <Card sx={{bgcolor:"#F7EF99"}}>
+        <Card>
             <Typography sx={{ p: 2 }}>
                 Base Experience: {pokemon.base_experience}
             </Typography>
