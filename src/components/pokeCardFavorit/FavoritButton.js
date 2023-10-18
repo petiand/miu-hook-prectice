@@ -8,7 +8,7 @@ export default function FavoritButton() {
 
   const onNavigation = useCallback(() => {
     navigate("/favorit");
-  },[]);
+  }, []);
 
   return (
     <Button

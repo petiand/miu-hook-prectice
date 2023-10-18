@@ -1,21 +1,16 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-const useSearch = ({value}) => {
+const useSearch = ({ value }) => {
+  const [localSearch, setLocalSearch] = useState("");
 
-    const [localSearch, setLocalSearch] = useState("")
+  const onChange = (e) => setLocalSearch(e.target.value);
 
-    const onChange = (e) => setLocalSearch(e.target.value)
+  useEffect(() => {
+    const searchTimeOutId = setTimeout(() => setLocalSearch(localSearch), 500);
+    return () => clearTimeout(searchTimeOutId);
+  }, [localSearch]);
 
-    useEffect(() => {
-        const searchTimeOutId = setTimeout(() => setLocalSearch(localSearch),500)
-        return () =>
-            clearTimeout(searchTimeOutId)
-    },[localSearch])
-    
-return {onChange, localSearch}
-}
+  return { onChange, localSearch };
+};
 
-
-
-export default useSearch
-
+export default useSearch;
