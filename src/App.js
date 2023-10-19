@@ -1,8 +1,7 @@
-import PokemonContext from './context/PokemonContext';
-import AppRoutes from './navigation/AppRoutes';
+import PokemonContext from "./context/PokemonContext";
+import AppRoutes from "./navigation/AppRoutes";
 
 function App() {
-
   return (
     <PokemonContext>
       <AppRoutes />
@@ -12,13 +11,12 @@ function App() {
 
 export default App;
 //TODO for week2
-//useCalback 
+//useCalback
 //familiarize in deep for global stylin in miu, hoove etc
 //separet componenet- managing+rendering
 //when search dont rerender
 
-
-/* week2 realization: 
+/* week2 realizations: 
 -axio, async/await, error handeling (data fetching)
 -AvatarimgComp + loadingspinner to card and avatar
 -Global styling - theme+darkmode

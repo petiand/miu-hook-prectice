@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useGetPokemon = ({ url }) => {
+const useGetPokemon = ({ url, shouldKeepPreviousData = false }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -10,7 +10,16 @@ const useGetPokemon = ({ url }) => {
     const getPokemon = async () => {
       try {
         const respons = await axios.get(url);
-        setData(respons.data);
+        if (shouldKeepPreviousData && data !== null) {
+          const currentResults = [...data.results, ...respons.data?.results];
+          const newData = {
+            ...respons.data,
+            results: currentResults,
+          };
+          setData(newData);
+        } else {
+          setData(respons.data);
+        }
         setIsLoading(true);
       } catch (err) {
         alert(`${err.message}`);
@@ -19,7 +28,7 @@ const useGetPokemon = ({ url }) => {
       }
     };
     getPokemon();
-  }, [url]);
+  }, [url, shouldKeepPreviousData]);
 
   return [data, isLoading];
 };
