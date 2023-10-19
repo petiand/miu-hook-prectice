@@ -35,3 +35,8 @@ export default function SearchBar({ setSearch }) {
     </>
   );
 }
+
+//todo week 3- make 2 pr, -practice merge conflict
+// more complex style localy, enter in deep
+// recursuive functions
+//event loop
