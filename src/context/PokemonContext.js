@@ -5,8 +5,6 @@ export const Context = createContext();
 const PokemonContext = ({ children }) => {
   const [value, setValue] = useState("");
 
-  const [darkMode, setDarkMode] = useState(false);
-
   const [favoritList, setFavoritList] = useState([]);
 
   return (
@@ -14,8 +12,6 @@ const PokemonContext = ({ children }) => {
       value={{
         value,
         setValue,
-        darkMode,
-        setDarkMode,
         favoritList,
         setFavoritList,
       }}

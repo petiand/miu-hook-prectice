@@ -4,8 +4,6 @@ import PokeCard from "../pokeCard/PokeCard";
 export default function FavocirtCards() {
   const { favoritList } = usePokemon();
 
-  // console.log(favoritList)
-
   return (
     <>
       {favoritList.length > 0 &&

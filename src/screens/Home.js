@@ -8,7 +8,6 @@ import HomeCards from "../components/pokeCardHome/HomeCards";
 
 export default function Home() {
   const [search, setSearch] = useState("");
-
   return (
     <>
       <Box

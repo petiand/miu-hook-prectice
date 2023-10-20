@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import useGetPokemon from "../../hooks/useGetPokemon";
 import Cards from "../pokeCard/Cards";
 
