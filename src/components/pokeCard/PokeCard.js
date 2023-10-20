@@ -27,7 +27,6 @@ export default function PokeCard({
   handleClose,
   open,
 }) {
-  console.log("pokeCardsz");
   return (
     <Grid item xs={4}>
       {pokemonId && (

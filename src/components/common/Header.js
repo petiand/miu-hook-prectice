@@ -16,8 +16,6 @@ export default function Header() {
   const onNavigation = () => {
     navigate("/about");
   };
-
-  console.log("header");
   return (
     <>
       <Toolbar

@@ -3,7 +3,6 @@ import { CircularProgress, Grid, Typography } from "@mui/material";
 import PokeCardContainer from "../pokeCardHome/PokeCardContainer";
 
 export default function Cards({ list, isLoading }) {
-  console.log("cards");
   return (
     <>
       {isLoading && <CircularProgress sx={{ mt: 15 }} />}

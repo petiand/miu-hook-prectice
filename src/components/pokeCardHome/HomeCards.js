@@ -46,7 +46,7 @@ export default function HomeCards({ search }) {
     for (const { url: sortedUrl } of sortedList) {
       sortedUrlList.push(sortedUrl);
     }
-  console.log("renderhomeCard");
+
   return (
     <>
       <Container
