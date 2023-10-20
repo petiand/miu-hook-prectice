@@ -17,6 +17,7 @@ export default function Header() {
     navigate("/about");
   };
 
+  console.log("header");
   return (
     <>
       <Toolbar

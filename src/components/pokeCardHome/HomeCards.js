@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import useGetPokemon from "../../hooks/useGetPokemon";
 import Cards from "../pokeCard/Cards";
 
@@ -52,7 +46,7 @@ export default function HomeCards({ search }) {
     for (const { url: sortedUrl } of sortedList) {
       sortedUrlList.push(sortedUrl);
     }
-
+  console.log("renderhomeCard");
   return (
     <>
       <Container

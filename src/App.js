@@ -1,10 +1,13 @@
 import PokemonContext from "./context/PokemonContext";
+import ThemeContext from "./context/ThemeContext";
 import AppRoutes from "./navigation/AppRoutes";
 
 function App() {
   return (
     <PokemonContext>
-      <AppRoutes />
+      <ThemeContext>
+        <AppRoutes />
+      </ThemeContext>
     </PokemonContext>
   );
 }

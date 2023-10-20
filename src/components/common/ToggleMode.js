@@ -1,13 +1,13 @@
 import { CardActionArea, IconButton } from "@mui/material";
-import { usePokemon } from "../../hooks/usePokemon";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import { useTheme } from "../../hooks/useTheme";
 
 export default function ToggleMode() {
-  const modeContext = usePokemon();
+  const { darkMode, setDarkMode } = useTheme();
 
   function toggleTheme() {
-    modeContext.setDarkMode((prev) => !prev);
+    setDarkMode((prev) => !prev);
   }
 
   return (
@@ -23,10 +23,8 @@ export default function ToggleMode() {
         color: "#003049",
       }}
     >
-      {modeContext.darkMode ? "darkmode" : "lightmode"}
-      <IconButton>
-        {modeContext.darkMode ? <DarkModeIcon /> : <LightModeIcon />}
-      </IconButton>
+      {darkMode ? "darkmode" : "lightmode"}
+      <IconButton>{darkMode ? <DarkModeIcon /> : <LightModeIcon />}</IconButton>
     </CardActionArea>
   );
 }

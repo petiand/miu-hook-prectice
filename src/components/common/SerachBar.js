@@ -16,7 +16,6 @@ export default function SearchBar({ setSearch }) {
   const searchBarRef = useRef();
 
   const focusToSearchBar = () => searchBarRef.current.focus();
-
   return (
     <>
       <TextField
