@@ -11,7 +11,7 @@ import ContextValue from "../common/ContextValue";
 import AvatarImg from "./AvatarImg";
 import PokeCardContent from "./PokeCardContent";
 import FavoritIcon from "../pokeCardFavorit/FavoritIcon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useGetPokeIcon from "../../hooks/useGetPokeIcon";
 
 export default function PokeCard({
@@ -32,6 +32,10 @@ export default function PokeCard({
   const [pokeType, setPokeType] = useState("");
   const shadow = useGetPokeIcon(pokeType);
   const backGround = useGetPokeIcon(type);
+
+  useEffect(() => {
+    setPokeType(type);
+  }, [type]);
 
   return (
     <Grid item xs={3}>
