@@ -8,7 +8,7 @@ const themeLight = createTheme({
     },
     background: {
       default: "#f2e8cf",
-      paper: "#F7EF99",
+      paper: "#e4e6c3",
     },
   },
   components: {
@@ -95,4 +95,11 @@ const themeDark = createTheme({
   },
 });
 
-export { themeDark, themeLight };
+const pokeColor = createTheme({
+  palette: {
+    bug: "#92BC2C",
+    dark: "#595761",
+    dragon: "#0C69C8",
+  },
+});
+export { themeDark, themeLight, pokeColor };

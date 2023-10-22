@@ -1,10 +1,10 @@
 import { CardActionArea, IconButton } from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import { useTheme } from "../../hooks/useTheme";
+import { useThemeMode } from "../../hooks/useThemeMode";
 
 export default function ToggleMode() {
-  const { darkMode, setDarkMode } = useTheme();
+  const { darkMode, setDarkMode } = useThemeMode();
 
   function toggleTheme() {
     setDarkMode((prev) => !prev);

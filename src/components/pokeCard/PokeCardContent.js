@@ -1,23 +1,20 @@
 import { CardContent, Typography } from "@mui/material";
+import TypeIcon from "./TypeIcon";
 
-export default function PokeCardContent({
-  pokemonId,
-  name,
-  type,
-  ability,
-  height,
-  weight,
-}) {
+export default function PokeCardContent({ name, type }) {
   return (
-    <CardContent sx={{ textAlign: "center" }}>
-      <Typography variant="h5">
+    <CardContent
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Typography variant="h5" sx={{ color: "#FFFFFF" }}>
         {name.charAt(0).toUpperCase() + name.slice(1)}
       </Typography>
-      <Typography>Type: {type}</Typography>
-      <Typography>Base Ability: {ability}</Typography>
-      <Typography>
-        Hight: {height}m Weight: {weight}kg
-      </Typography>
+      <TypeIcon pokeType={type} />
     </CardContent>
   );
 }

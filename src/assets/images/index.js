@@ -1,1 +1,1 @@
-export const pokeBall= require("./pokeball.png")
+export const pokeBall = require("./pokeball.png");

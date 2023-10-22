@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { Context } from "../context/ThemeContext";
 
-const useTheme = () => {
+const useThemeMode = () => {
   const context = useContext(Context);
 
   return context;
 };
 
-export { useTheme };
+export { useThemeMode };

@@ -11,6 +11,8 @@ import ContextValue from "../common/ContextValue";
 import AvatarImg from "./AvatarImg";
 import PokeCardContent from "./PokeCardContent";
 import FavoritIcon from "../pokeCardFavorit/FavoritIcon";
+import { useState } from "react";
+import useGetPokeIcon from "../../hooks/useGetPokeIcon";
 
 export default function PokeCard({
   pokemon,
@@ -27,21 +29,34 @@ export default function PokeCard({
   handleClose,
   open,
 }) {
+  const [pokeType, setPokeType] = useState("");
+  const shadow = useGetPokeIcon(pokeType);
+  const backGround = useGetPokeIcon(type);
+
   return (
-    <Grid item xs={4}>
+    <Grid item xs={3}>
       {pokemonId && (
         <Card
           variant="outlined"
           sx={{
+            border: "none",
             m: 2,
-            minWidth: 300,
-            minHeight: 300,
-            // bgcolor:"#F7EF99",
+            maxWidth: 350,
+            Height: 350,
+            bgcolor: backGround.color,
             borderRadius: "10px",
-            ":hover": { boxShadow: 20, scale: "1.1" },
+            ":hover": {
+              boxShadow: "0 0 100px",
+              color: shadow.color,
+              scale: "1.1",
+            },
           }}
         >
-          <CardActionArea aria-describedby={id} onClick={handleClick}>
+          <CardActionArea
+            aria-describedby={id}
+            onClick={handleClick}
+            onMouseEnter={() => setPokeType(type)}
+          >
             <FavoritIcon
               id={pokemonId}
               name={name}
@@ -64,14 +79,7 @@ export default function PokeCard({
                 >
                   {pokemonId && <AvatarImg id={pokemonId} />}
                 </CardContent>
-                <PokeCardContent
-                  pokemonId={pokemonId}
-                  name={name}
-                  type={type}
-                  ability={ability}
-                  height={height}
-                  weight={weight}
-                />
+                <PokeCardContent name={name} type={type} />
               </>
             )}
             <ContextValue
