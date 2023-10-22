@@ -50,10 +50,10 @@ export default function HomeCards({ search }) {
   return (
     <>
       <Container
-        maxWidth="lg"
+        maxWidth="xl"
         sx={{
-          p: 5,
           textAlign: "center",
+          //bgcolor: "white",
         }}
       >
         <FavoritButton />

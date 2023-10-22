@@ -7,10 +7,10 @@ import Header from "../components/common/Header";
 import About from "../screens/About";
 import Home from "../screens/Home";
 import Favorit from "../screens/Favorit";
-import { useTheme } from "../hooks/useTheme";
+import { useThemeMode } from "../hooks/useThemeMode";
 
 export default function AppRoutes() {
-  const { darkMode } = useTheme();
+  const { darkMode } = useThemeMode();
   return (
     <>
       <ThemeProvider theme={darkMode ? themeDark : themeLight}>
