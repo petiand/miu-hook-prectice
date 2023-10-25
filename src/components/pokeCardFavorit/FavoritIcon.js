@@ -31,7 +31,11 @@ export default function FavoritIcon({
       }}
       sx={{ ...restProps }}
     >
-      {isFavorit ? <StarIcon /> : <StarBorderIcon />}
+      {isFavorit ? (
+        <StarIcon style={{ color: "#fff220" }} />
+      ) : (
+        <StarBorderIcon style={{ color: "#fff220" }} />
+      )}
     </IconButton>
   );
 }

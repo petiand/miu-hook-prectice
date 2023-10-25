@@ -3,7 +3,6 @@ import useGetPokemon from "../../hooks/useGetPokemon";
 import Cards from "../pokeCard/Cards";
 
 import { Container } from "@mui/material";
-import FavoritButton from "../pokeCardFavorit/FavoritButton";
 import useScrollListener from "../../hooks/useScrollListener";
 
 export default function HomeCards({ search }) {
@@ -56,7 +55,6 @@ export default function HomeCards({ search }) {
           //bgcolor: "white",
         }}
       >
-        <FavoritButton />
         <Cards list={sortedUrlList} isLoading={isLoading} />
       </Container>
     </>

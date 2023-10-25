@@ -38,6 +38,7 @@ export default function PokeCard({
           sx={{
             border: "none",
             m: 2,
+            mt: 8,
             maxWidth: 350,
             Height: 350,
             bgcolor: color.bgColor,
