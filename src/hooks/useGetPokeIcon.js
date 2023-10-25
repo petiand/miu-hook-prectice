@@ -20,41 +20,131 @@ import WaterIcon from "../assets/images/icons/WaterIcon";
 const useGetPokeIcon = (pokeType) => {
   switch (pokeType) {
     case "bug":
-      return { icon: <BugIcon />, text: "BUG", color: "#92BC2C" };
+      return {
+        icon: <BugIcon />,
+        text: "BUG",
+        color: "rgb(146,188,44)",
+        bgColor: "rgb(146,188,44, 0.7)",
+      };
     case "dark":
-      return { icon: <DarkIcon />, text: "DARK", color: "#595761" };
+      return {
+        icon: <DarkIcon />,
+        text: "DARK",
+        color: "rgb(89,87,97)",
+        bgColor: "rgb(89,87,97, 0.7)",
+      };
     case "dragon":
-      return { icon: <DragonIcon />, text: "DRAGON", color: "#0C69C8" };
+      return {
+        icon: <DragonIcon />,
+        text: "DRAGON",
+        color: "rgb(12,105,200)",
+        bgColor: "rgb(12,105,200, 0.7)",
+      };
     case "electric":
-      return { icon: <ElectricIcon />, text: "ELECTRIC", color: "#F2D94E" };
+      return {
+        icon: <ElectricIcon />,
+        text: "ELECTRIC",
+        color: "rgb(242,217,78)",
+        bgColor: "rgb(242,217,78)",
+      };
     case "fairy":
-      return { icon: <FairyIcon />, text: "FAIRY", color: "#EE90E6" };
+      return {
+        icon: <FairyIcon />,
+        text: "FAIRY",
+        color: "rgb(238,144,230)",
+        bgColor: "rgb(238,144,230,0.7)",
+      };
     case "fighting":
-      return { icon: <FightingIcon />, text: "FIGHTING", color: "#D3425F" };
+      return {
+        icon: <FightingIcon />,
+        text: "FIGHTING",
+        color: "rgb(211,66,95,1.00)",
+        bgColor: "rgb(211,66,95,0.7)",
+      };
     case "fire":
-      return { icon: <FireIcon />, text: "FIRE", color: "#FBA54C" };
+      return {
+        icon: <FireIcon />,
+        text: "FIRE",
+        color: "rgb(251,165,76,1.00)",
+        bgColor: "rgb(251,165,76,0.7)",
+      };
     case "flying":
-      return { icon: <FlyingIcon />, text: "FLYING", color: "#A1BBEC" };
+      return {
+        icon: <FlyingIcon />,
+        text: "FLYING",
+        color: " rgb(161,187,236,1.00)",
+        bgColor: " rgb(161,187,236,0.7)",
+      };
     case "ghost":
-      return { icon: <GhostIcon />, text: "GHOST", color: "#5F6DBC" };
+      return {
+        icon: <GhostIcon />,
+        text: "GHOST",
+        color: "rgb(95,109,188)",
+        bgColor: "rgb(95,109,188)",
+      };
     case "grass":
-      return { icon: <GrassIcon />, text: "GRASS", color: "#5FBD58" };
+      return {
+        icon: <GrassIcon />,
+        text: "GRASS",
+        color: "rgb(95,189,88)",
+        bgColor: "rgb(95,189,88,0.7)",
+      };
     case "ground":
-      return { icon: <GroundIcon />, text: "GROUND", color: "#DA7C4D" };
+      return {
+        icon: <GroundIcon />,
+        text: "GROUND",
+        color: "rgb(218,124,77)",
+        bgColor: "rgb(218,124,77,0.7)",
+      };
     case "ice":
-      return { icon: <IceIcon />, text: "ICE", color: "#75D0C1" };
+      return {
+        icon: <IceIcon />,
+        text: "ICE",
+        color: "rgb(117,208,193)",
+        bgColor: "rgb(117,208,193,0.7)",
+      };
     case "normal":
-      return { icon: <NormalIcon />, text: "NORMAL", color: "#A0A29F" };
+      return {
+        icon: <NormalIcon />,
+        text: "NORMAL",
+        color: " rgb(160,162,159)",
+        bgColor: " rgb(160,162,159,0.7)",
+      };
     case "poison":
-      return { icon: <PoisonIcon />, text: "POISON", color: "#B763CF" };
+      return {
+        icon: <PoisonIcon />,
+        text: "POISON",
+        color: "rgb(183,99,207)",
+        bgColor: "rgb(183,99,207,0.7)",
+      };
     case "psychic":
-      return { icon: <PsychicIcon />, text: "PSYCHIC", color: "#FA8581" };
+      return {
+        icon: <PsychicIcon />,
+        text: "PSYCHIC",
+        color: "rgb(250,133,129)",
+        bgColor: "rgb(250,133,129,0.7)",
+      };
     case "rock":
-      return { icon: <RockIcon />, text: "ROCK", color: "#C9BB8A" };
+      return {
+        icon: <RockIcon />,
+        text: "ROCK",
+        color: "rgb(201,187,138)",
+        bgColor: "rgb(201,187,138,0.7)",
+      };
     case "steel":
-      return { icon: <SteelIcon />, text: "STEEL", color: "#5695A3" };
+      return {
+        icon: <SteelIcon />,
+        text: "STEEL",
+        color: "#rgb(86,149,163)",
+        bgColor: "rgb(86,149,163,0.7)",
+      };
     case "water":
-      return { icon: <WaterIcon />, text: "WATER", color: "#539DDF" };
+      return {
+        icon: <WaterIcon />,
+        text: "WATER",
+        color: "rgb(83,157,223)",
+        bgColor: "rgb(83,157,223,0.7)",
+      };
     default:
       return <></>;
   }
