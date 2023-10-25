@@ -9,6 +9,7 @@ import ContextValue from "./ContextValue";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { pokeBall } from "../../assets/images";
 import ToggleMode from "./ToggleMode";
+import FavoritButton from "../pokeCardFavorit/FavoritButton";
 
 export default function Header() {
   let navigate = useNavigate();
@@ -35,10 +36,10 @@ export default function Header() {
             display: "flex",
             alignItems: "center",
             width: 220,
-            border: 1,
-            borderColor: "#fdf0d5",
+            border: 6,
+            borderColor: "red",
             p: 1,
-            borderRadius: 1,
+            borderRadius: 6,
           }}
         >
           <img
@@ -63,6 +64,7 @@ export default function Header() {
           }}
         >
           <ToggleMode />
+          <FavoritButton />
           <Button onClick={onNavigation} variant="h5" sx={{ color: "#f2e8cf" }}>
             {"About"}
           </Button>

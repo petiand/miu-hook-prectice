@@ -1,7 +1,7 @@
-import { TextField } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
-
-import BaseBtn from "./BaseBtn";
+import { InputAdornment, TextField, createStyles } from "@mui/material";
+import { useEffect, useState } from "react";
+import PokeBallIcon from "../../assets/images/icons/PokeBallIcon";
+import { red } from "@mui/material/colors";
 
 export default function SearchBar({ setSearch }) {
   const [localSearch, setLocalSearch] = useState("");
@@ -11,25 +11,45 @@ export default function SearchBar({ setSearch }) {
   useEffect(() => {
     const searchTimeOutId = setTimeout(() => setSearch(localSearch), 500);
     return () => clearTimeout(searchTimeOutId);
-  }, [localSearch]);
+  }, [localSearch, setSearch]);
 
-  const searchBarRef = useRef();
-
-  const focusToSearchBar = () => searchBarRef.current.focus();
   return (
     <>
       <TextField
-        sx={{ width: 450, mb: 5 }}
+        variant="standard"
+        sx={{
+          borderRadius: 1,
+          bgcolor: "whitesmoke",
+          width: 100,
+          "&:focus-within": {
+            width: 500,
+          },
+          transition: "width 1s",
+          "& .MuiInput-underline:before": {
+            borderBottom: "none",
+          },
+          "& .MuiInput-underline:hover:before": {
+            borderBottomColor: "#003049",
+          },
+          "& .MuiInput-underline:after": {
+            borderBottomColor: "#EE1515",
+          },
+          disabled: "true",
+        }}
         value={localSearch}
-        inputRef={searchBarRef}
         onChange={onChangeSerchBar}
         id="search-bar"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <PokeBallIcon />
+            </InputAdornment>
+          ),
+        }}
         label="Type to Search"
-      />
-      <BaseBtn
-        text="Click to focus the searchbar"
-        onClick={focusToSearchBar}
-        width="150px"
+        InputLabelProps={{
+          disabled: "true",
+        }}
       />
     </>
   );

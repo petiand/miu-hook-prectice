@@ -1,5 +1,5 @@
 import { CardContent, Typography } from "@mui/material";
-import TypeIcon from "./TypeIcon";
+import TypeChip from "./TypeChip";
 
 export default function PokeCardContent({ name, type }) {
   return (
@@ -14,7 +14,7 @@ export default function PokeCardContent({ name, type }) {
       <Typography variant="h5" sx={{ color: "#FFFFFF" }}>
         {name.charAt(0).toUpperCase() + name.slice(1)}
       </Typography>
-      <TypeIcon pokeType={type} />
+      <TypeChip pokeType={type} />
     </CardContent>
   );
 }

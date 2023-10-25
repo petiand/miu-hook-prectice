@@ -19,7 +19,7 @@ export default function Favorit() {
       >
         <h1>Favorit Pokemons</h1>
         <Container
-          maxWidth="lg"
+          maxWidth="xl"
           sx={{
             p: 5,
             textAlign: "center",
