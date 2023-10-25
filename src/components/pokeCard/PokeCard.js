@@ -29,7 +29,7 @@ export default function PokeCard({
   open,
 }) {
   const color = useGetPokeIcon(type);
-
+  console.log("rerendering");
   return (
     <Grid item xs={3}>
       {pokemonId && (

@@ -17,6 +17,8 @@ export default function Header() {
   const onNavigation = () => {
     navigate("/about");
   };
+
+  console.log("rerenderingHEADER");
   return (
     <>
       <Toolbar
@@ -36,8 +38,7 @@ export default function Header() {
             display: "flex",
             alignItems: "center",
             width: 220,
-            border: 1,
-            borderColor: "#fdf0d5",
+            border: "none",
             p: 1,
             borderRadius: 1,
           }}
