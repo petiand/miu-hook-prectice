@@ -36,10 +36,10 @@ export default function Header() {
             display: "flex",
             alignItems: "center",
             width: 220,
-            border: 1,
-            borderColor: "#fdf0d5",
+            border: 6,
+            borderColor: "red",
             p: 1,
-            borderRadius: 1,
+            borderRadius: 6,
           }}
         >
           <img
