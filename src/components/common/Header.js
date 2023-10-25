@@ -37,7 +37,7 @@ export default function Header() {
             alignItems: "center",
             width: 220,
             border: 1,
-            borderColor: "red",
+            borderColor: "#fdf0d5",
             p: 1,
             borderRadius: 1,
           }}
