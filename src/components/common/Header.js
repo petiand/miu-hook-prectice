@@ -38,7 +38,7 @@ export default function Header() {
             width: 220,
             border: "none",
             p: 1,
-            borderRadius: 1,
+            borderRadius: 6,
           }}
         >
           <img
