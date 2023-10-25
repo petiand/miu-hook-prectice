@@ -36,8 +36,7 @@ export default function Header() {
             display: "flex",
             alignItems: "center",
             width: 220,
-            border: 6,
-            borderColor: "red",
+            border: "none",
             p: 1,
             borderRadius: 6,
           }}
