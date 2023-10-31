@@ -1,6 +1,5 @@
 import { Box, Container, Typography, createStyles } from "@mui/material";
 import BackButton from "../components/common/BackButton";
-import TypeIcon from "../components/pokeCard/TypeChip";
 
 export default function About() {
   return (

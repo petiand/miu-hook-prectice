@@ -34,6 +34,7 @@ export default function PokeCard({
     <Grid item xs={3}>
       {pokemonId && (
         <Card
+          data-testid="poke-card"
           variant="outlined"
           sx={{
             border: "none",
@@ -76,14 +77,14 @@ export default function PokeCard({
                 <PokeCardContent name={name} type={type} />
               </>
             )}
-            <ContextValue
+            {/*   <ContextValue
               color="#fdf0d5"
               bgcolor="#003049"
               position="absolute"
               top="150px"
               left="30px"
               ml="26px"
-            />
+            /> */}
           </CardActionArea>
         </Card>
       )}
