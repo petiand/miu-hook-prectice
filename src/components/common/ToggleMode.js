@@ -12,6 +12,7 @@ export default function ToggleMode() {
 
   return (
     <CardActionArea
+      data-testid="toggle"
       onClick={toggleTheme}
       sx={{
         pl: 1,

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchBar from "../components/common/SerachBar";
+import SearchBar from "../components/common/SearachBar";
 import ScrollTopBtn from "../components/common/ScrollTopBtn";
 import { Box } from "@mui/material";
 import ContextValue from "../components/common/ContextValue";

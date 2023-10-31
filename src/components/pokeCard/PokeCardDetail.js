@@ -13,7 +13,13 @@ export default function PokeCardDetail({
       open={open}
       onClick={handleClose}
     >
-      <Popover id={id} open={open} anchorEl={anchorEl} onClose={handleClose}>
+      <Popover
+        data-testid="popover-detail"
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+      >
         <Card>
           <Typography sx={{ p: 2 }}>
             Base Experience: {pokemon.base_experience}

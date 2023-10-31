@@ -1,7 +1,6 @@
-import { InputAdornment, TextField, createStyles } from "@mui/material";
+import { InputAdornment, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import PokeBallIcon from "../../assets/images/icons/PokeBallIcon";
-import { red } from "@mui/material/colors";
 
 export default function SearchBar({ setSearch }) {
   const [localSearch, setLocalSearch] = useState("");
@@ -54,8 +53,3 @@ export default function SearchBar({ setSearch }) {
     </>
   );
 }
-
-//todo week 3- make 2 pr, -practice merge conflict
-// more complex style localy, enter in deep
-// recursuive functions
-//event loop
