@@ -1,17 +1,17 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import ToggleMode from "../ToggleMode";
-import ThemeContext, { Context } from "../../../context/ThemeContext";
 
-const renderComponenet = () => {
-  render(
-    <Context.Provider value={{ mockedDarkMode, mockedSetDarkMode }}>
-      <ToggleMode />;
-    </Context.Provider>
-  );
-};
+//split thist tesst
+//render ones the componenet befor all(), and clean after each (cleanUp)
+
+beforeEach(() => {
+  render(<ToggleMode />);
+});
+
+afterEach(cleanup);
 
 const mockedSetDarkMode = jest.fn();
-const mockedDarkMode = true;
+const mockedDarkMode = false;
 
 jest.mock("../../../hooks/useThemeMode", () => {
   return {
@@ -22,38 +22,30 @@ jest.mock("../../../hooks/useThemeMode", () => {
   };
 });
 
-describe("ToggleMode button works test", () => {
-  test("should the toggleMode rendering on the screen", () => {
-    renderComponenet();
+describe("ToggleMode button functionality Test", () => {
+  test("Should render toggleMode button on the screen", () => {
     const toggleElement = screen.getByTestId(/toggle/i);
-    screen.logTestingPlaygroundURL();
+    //screen.logTestingPlaygroundURL();
     expect(toggleElement).toBeInTheDocument();
   });
 
-  test("should the toggelMode element call the contex setterfunction when clicked", () => {
-    render(
-      <ThemeContext>
-        <ToggleMode />
-      </ThemeContext>
-    );
+  test("Should the toggleMode button calls context setter function on click", () => {
     const toggleElement = screen.getByTestId(/toggle/i);
     fireEvent.click(toggleElement);
     expect(mockedSetDarkMode).toHaveBeenCalled();
   });
 
-  test("shold the button show the correct text and icon for the selected mode", () => {
-    renderComponenet();
+  test("ToggleMode button displays correct text and icon for Light Mode", () => {
     const toggleElement = screen.getByTestId(/toggle/i);
     const toggleElementLightIcone = screen.queryByTestId(/LightModeIcon/i);
-    const toggleElementDarkIcone = screen.queryByTestId(/DarkModeIcon/i);
-    if (mockedDarkMode) {
-      expect(toggleElement).toHaveTextContent(/darkmode/i);
-      expect(toggleElementDarkIcone).toBeInTheDocument();
-      //console.log("darkmode");
-    } else {
-      expect(toggleElement).toHaveTextContent(/lightmode/i);
-      expect(toggleElementLightIcone).toBeInTheDocument();
-      //console.log("lightmode");
-    }
+    expect(toggleElement).toHaveTextContent(/lightmode/i);
+    expect(toggleElementLightIcone).toBeInTheDocument();
   });
+
+  // test("ToggleMode button displays correct text and icon for Dark Mode", () => {
+  //   const toggleElement = screen.getByTestId(/toggle/i);
+  //   const toggleElementDarkIcone = screen.queryByTestId(/DarkModeIcon/i);
+  //   expect(toggleElement).toHaveTextContent(/darkmode/i);
+  //   expect(toggleElementDarkIcone).toBeInTheDocument();
+  // });
 });

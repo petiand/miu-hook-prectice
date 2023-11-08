@@ -14,37 +14,25 @@ export default function HomeCards({ search }) {
     url: currentUrl,
     shouldKeepPreviousData: true,
   });
-
   const onGoNext = useCallback(() => {
     setCurrentUrl(pokemonData?.next);
   }, [pokemonData]);
 
   useScrollListener({ callBack: onGoNext });
 
-  const filteredList = useMemo(
-    () =>
-      pokemonData?.results.filter((p) =>
-        p.name.toLowerCase().includes(search?.toLocaleLowerCase())
-      ),
-    [pokemonData, search]
-  );
-
-  const sorted = useMemo(
-    () => filteredList?.toSorted((a, b) => a.name.localeCompare(b.name)),
-    [filteredList]
-  );
-
-  const sortedList =
-    filteredList?.length === pokemonData?.results.length
-      ? filteredList
-      : sorted;
-
-  const sortedUrlList = [];
-
-  if (sortedList)
-    for (const { url: sortedUrl } of sortedList) {
-      sortedUrlList.push(sortedUrl);
-    }
+  const usedList = useMemo(() => {
+    if (search) {
+      const filtered = pokemonData?.results.filter((item) =>
+        item.name.toLowerCase().includes(search?.toLocaleLowerCase())
+      );
+      if (filtered && filtered?.length > 0) {
+        const sorted = filtered?.toSorted((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+        return sorted?.map((i) => i.url);
+      }
+    } else return pokemonData?.results?.map((i) => i.url);
+  }, [pokemonData, search]);
 
   return (
     <>
@@ -55,7 +43,7 @@ export default function HomeCards({ search }) {
           //bgcolor: "white",
         }}
       >
-        <Cards list={sortedUrlList} isLoading={isLoading} />
+        <Cards list={usedList} isLoading={isLoading} />
       </Container>
     </>
   );

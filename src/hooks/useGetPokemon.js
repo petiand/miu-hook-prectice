@@ -9,16 +9,16 @@ const useGetPokemon = ({ url, shouldKeepPreviousData = false }) => {
     setIsLoading(true);
     const getPokemon = async () => {
       try {
-        const respons = await axios.get(url);
+        const response = await axios.get(url);
         if (shouldKeepPreviousData && data !== null) {
-          const currentResults = [...data.results, ...respons.data?.results];
+          const currentResults = [...data.results, ...response.data?.results];
           const newData = {
-            ...respons.data,
+            ...response.data,
             results: currentResults,
           };
           setData(newData);
         } else {
-          setData(respons.data);
+          setData(response.data);
         }
         setIsLoading(true);
       } catch (err) {

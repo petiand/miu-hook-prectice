@@ -25,9 +25,9 @@ export default function PokeCardContainer({ url }) {
         <PokeCard
           pokemon={pokemon}
           pokemonId={pokemon.id}
-          name={pokemon.species.name}
-          type={pokemon.types[0].type.name}
-          ability={pokemon.abilities[0].ability.name}
+          name={pokemon?.species?.name || ""}
+          type={pokemon?.types ? pokemon.types[0].type.name : ""}
+          ability={pokemon?.abilities ? pokemon.abilities[0].ability.name : ""}
           height={pokemon.height}
           weight={pokemon.weight}
           handleClick={handleClick}

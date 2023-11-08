@@ -7,40 +7,39 @@ export default function PokeCardDetail({
   id,
   open,
 }) {
+  console.log(pokemon);
   return (
     <Modal
       sx={{ backdropFilter: "blur(3px)" }}
       open={open}
       onClick={handleClose}
     >
-      <Popover
-        data-testid="popover-detail"
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-      >
+      <Popover id={id} open={open} anchorEl={anchorEl} onClose={handleClose}>
         <Card>
           <Typography sx={{ p: 2 }}>
             Base Experience: {pokemon.base_experience}
           </Typography>
           <Typography sx={{ p: 2 }}>
             Held Items:{" "}
-            {pokemon.held_items[0]
+            {pokemon?.held_items && pokemon.held_items[0]
               ? pokemon.held_items[0]?.item.name
               : "no held items"}
           </Typography>
           <Typography sx={{ p: 2 }}>
             More Abilities:{" "}
-            {pokemon.abilities[1]
+            {pokemon?.abilities && pokemon.abilities[1]
               ? pokemon.abilities[1].ability.name
               : "no more abilities"}{" "}
-            {pokemon.abilities[2] && "," + pokemon.abilities[2].ability.name}
+            {pokemon?.abilities &&
+              pokemon.abilities[2] &&
+              "," + pokemon.abilities[2].ability.name}
           </Typography>
-          <Typography sx={{ p: 2 }}>Forms: {pokemon.forms[0].name}</Typography>
+          <Typography sx={{ p: 2 }}>
+            Forms: {pokemon?.forms ? pokemon.forms[0].name : ""}
+          </Typography>
           <Typography sx={{ p: 2 }}>
             More info about the species click the link:{" "}
-            <Link href={pokemon.species.url}>click me</Link>
+            <Link href={pokemon?.species?.url}>click me</Link>
           </Typography>
         </Card>
       </Popover>

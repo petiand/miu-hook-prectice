@@ -1,5 +1,6 @@
 import { Chip } from "@mui/material";
 import useGetPokeIcon from "../../hooks/useGetPokeIcon";
+//import { useGetPokeIconOOP } from "../../hooks/useGetPokeIconOOP";
 
 export default function TypeChip({ pokeType }) {
   const pokeIcon = useGetPokeIcon(pokeType);

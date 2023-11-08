@@ -16,8 +16,6 @@ import PsychicIcon from "../assets/images/icons/PsychicIcon";
 import RockIcon from "../assets/images/icons/RockIcon";
 import SteelIcon from "../assets/images/icons/SteelIcon";
 import WaterIcon from "../assets/images/icons/WaterIcon";
-//object oriental way
-//refactor by folowing, ob orient inherintes, polimorfe, functuinc..
 
 export const POKE_ICON_BY_TYPE = {
   //POKE_ICON_BY_TYPE[pokeType].icon
