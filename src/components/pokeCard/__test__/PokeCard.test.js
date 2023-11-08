@@ -1,7 +1,8 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render, screen } from "@testing-library/react";
 import PokeCard from "../PokeCard";
 import useGetPokeIcon from "../../../hooks/useGetPokeIcon";
+
+//avoid mocking the UI
 
 const renderComponenet = () => {
   return render(
@@ -16,31 +17,36 @@ const renderComponenet = () => {
   );
 };
 
-jest.mock("../../pokeCardFavorit/FavoritIcon", () => {
-  return () => <div data-testid="mocked-FavoritIconComponent" />;
+jest.mock("../../../hooks/usePokemon", () => {
+  return {
+    usePokemon: () => ({
+      favoritList: [],
+      setFavoritList: jest.fn(),
+    }),
+  };
 });
 
 jest.mock("../../../hooks/useGetPokeIcon");
 
-test("poke card and his elements is shown on the screen", () => {
+test("PokeCard and its elements are displayed on the screen", () => {
   useGetPokeIcon.mockReturnValue({
     icon: <svg />,
     text: "BUG",
     color: "rgb(255, 0, 0)",
     bgColor: "rgb(255, 0, 0, 0.7)",
   });
+
   renderComponenet();
-  //is the pokekard rendered on the screen
+  //Is PokeCard rendered on the screen
   const cardElement = screen.getByTestId("poke-card");
   expect(cardElement).toBeInTheDocument;
-  //screen.debug();
-  //is the pokemon avatar rendered on the screen
+  //Is Pokemon avatar rendered on the screen
   const imgElement = screen.getByRole("img");
   expect(imgElement).toHaveAttribute("alt", "pokemonimg");
-  //is the pokemon name rendered corectly on the screen
+  //Is the Pokemon name rendered corectly on the screen
   const nameElement = screen.getByRole("heading");
   expect(nameElement).toHaveTextContent("Balbasaur");
-  //is the pokemon chip rendered, if the type is corect is tested in the typechiptest
-  const typeChipElement = screen.getByText(/bug/i);
+  //Is Pokemon chip rendered with the correct type
+  const typeChipElement = screen.getByText(/BUG/i);
   expect(typeChipElement).toBeInTheDocument;
 });

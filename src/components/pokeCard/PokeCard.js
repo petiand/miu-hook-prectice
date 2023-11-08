@@ -7,11 +7,11 @@ import {
 } from "@mui/material";
 
 import PokeCardDetail from "./PokeCardDetail";
-import ContextValue from "../common/ContextValue";
 import AvatarImg from "./AvatarImg";
 import PokeCardContent from "./PokeCardContent";
 import FavoritIcon from "../pokeCardFavorit/FavoritIcon";
 import useGetPokeIcon from "../../hooks/useGetPokeIcon";
+//import { useGetPokeIconOOP } from "../../hooks/useGetPokeIconOOP";
 
 export default function PokeCard({
   pokemon,
@@ -51,7 +51,11 @@ export default function PokeCard({
             },
           }}
         >
-          <CardActionArea aria-describedby={id} onClick={handleClick}>
+          <CardActionArea
+            data-testid="action-area"
+            aria-describedby={id}
+            onClick={handleClick}
+          >
             <FavoritIcon
               id={pokemonId}
               name={name}
@@ -77,14 +81,6 @@ export default function PokeCard({
                 <PokeCardContent name={name} type={type} />
               </>
             )}
-            {/*   <ContextValue
-              color="#fdf0d5"
-              bgcolor="#003049"
-              position="absolute"
-              top="150px"
-              left="30px"
-              ml="26px"
-            /> */}
           </CardActionArea>
         </Card>
       )}

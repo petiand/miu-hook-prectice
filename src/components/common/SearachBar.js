@@ -17,9 +17,10 @@ export default function SearchBar({ setSearch }) {
       <TextField
         variant="standard"
         sx={{
-          borderRadius: 1,
+          borderRadius: 4,
+          px: "8px",
           bgcolor: "whitesmoke",
-          width: 100,
+          width: 85,
           "&:focus-within": {
             width: 500,
           },
