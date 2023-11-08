@@ -1,12 +1,13 @@
-
-import PokemonContext from './components/PokemonContext';
-import Screen from './components/Screen';
+import PokemonContext from "./context/PokemonContext";
+import ThemeContext from "./context/ThemeContext";
+import AppRoutes from "./navigation/AppRoutes";
 
 function App() {
-
   return (
     <PokemonContext>
-      <Screen />
+      <ThemeContext>
+        <AppRoutes />
+      </ThemeContext>
     </PokemonContext>
   );
 }
