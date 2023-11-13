@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BaseBtn from "./BaseBtn";
+import { Button } from "@mui/material";
 
 export default function ScrollTopBtn() {
   const scrollToTop = () => {
@@ -19,15 +19,19 @@ export default function ScrollTopBtn() {
   return (
     <>
       {scrollTop > 450 && (
-        <BaseBtn
-          text="scroll top"
+        <Button
+          variant="outlined"
           onClick={scrollToTop}
-          width="120px"
-          position="fixed"
-          bottom="20px"
-          right="45px"
-          zIndex="1"
-        />
+          sx={{
+            width: "120px",
+            position: "fixed",
+            bottom: "20px",
+            right: "45px",
+            zIndex: "1",
+          }}
+        >
+          scroll top
+        </Button>
       )}
     </>
   );

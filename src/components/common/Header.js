@@ -29,40 +29,48 @@ export default function Header() {
           borderColor: "black",
         }}
       >
-        <CardActionArea
-          component={RouterLink}
-          to="/"
+        <Box
           sx={{
             display: "flex",
             alignItems: "center",
-            width: 220,
-            border: "none",
-            p: 1,
-            borderRadius: 6,
+            justifyContent: "center",
           }}
         >
-          <img
-            src={pokeBall}
-            alt="pokebalimage"
-            style={{ height: 35, width: 35 }}
-          />
-          <Typography
-            variant="h5"
+          <CardActionArea
+            component={RouterLink}
+            to="/"
             sx={{
-              color: "#f2e8cf",
-              ml: 1,
+              display: "flex",
+              alignItems: "center",
+              width: 220,
+              border: "none",
+              p: 1,
+              borderRadius: 6,
             }}
           >
-            POKE CODEX
-          </Typography>
-        </CardActionArea>
-        <ContextValue color="#003049" bgcolor="#fdf0d5" />
+            <img
+              src={pokeBall}
+              alt="pokebalimage"
+              style={{ height: 35, width: 35 }}
+            />
+            <Typography
+              variant="h5"
+              sx={{
+                color: "#f2e8cf",
+                ml: 1,
+              }}
+            >
+              POKE CODEX
+            </Typography>
+          </CardActionArea>
+          <ContextValue color="#003049" bgcolor="#fdf0d5" />
+          <ToggleMode />
+        </Box>
         <Box
           sx={{
             display: "flex",
           }}
         >
-          <ToggleMode />
           <FavoritButton />
           <Button onClick={onNavigation} variant="h5" sx={{ color: "#f2e8cf" }}>
             {"About"}
