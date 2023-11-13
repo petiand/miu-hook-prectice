@@ -2,12 +2,14 @@ import { usePokemon } from "../../hooks/usePokemon";
 import PokeCard from "../pokeCard/PokeCard";
 
 export default function FavocirtCards() {
-  const { favoritList } = usePokemon();
+  const { favoritList, editedPokemons } = usePokemon();
+  const usedPokemon =
+    editedPokemons.find((i) => i.id === favoritList?.id) || favoritList;
 
   return (
     <>
-      {favoritList.length > 0 &&
-        favoritList.map((item, idx) => {
+      {usedPokemon.length > 0 &&
+        usedPokemon.map((item, idx) => {
           return (
             <>
               <PokeCard

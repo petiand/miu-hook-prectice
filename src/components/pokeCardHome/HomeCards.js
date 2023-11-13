@@ -33,7 +33,7 @@ export default function HomeCards({ search }) {
       }
     } else return pokemonData?.results?.map((i) => i.url);
   }, [pokemonData, search]);
-
+  //console.log(usedList);
   return (
     <>
       <Container

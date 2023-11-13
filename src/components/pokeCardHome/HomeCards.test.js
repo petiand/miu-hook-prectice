@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import HomeCards from "./HomeCards";
 import userEvent from "@testing-library/user-event";
 import axios from "axios";
@@ -19,7 +19,7 @@ jest.mock("../../hooks/usePokemon", () => {
 
 const homeCardData = {
   count: 1292,
-  next: "https://pokeapi.co/api/v2/pokemon?offset=20&limit=20",
+  next: "pokemon/next20",
   previous: null,
   results: [
     { name: "Balbasaur", url: "pokemon/1" },
@@ -45,6 +45,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  cleanup();
   jest.clearAllMocks();
 });
 
@@ -74,3 +75,10 @@ describe("PokeCards screen rendering and interaction test ", () => {
     expect(detailCard).toBeInTheDocument;
   });
 });
+
+//slid modal from the right/isnted of the pop up modal
+//in the modal delet and edit buttons
+//when delet or edit a new modal with ok/cancel buttons
+//implememt local storage,
+//save the datas in local storage then modify that storage when delete etc
+//also unit and integration tesst

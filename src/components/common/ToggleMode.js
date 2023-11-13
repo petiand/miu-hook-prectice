@@ -15,16 +15,17 @@ export default function ToggleMode() {
       data-testid="toggle"
       onClick={toggleTheme}
       sx={{
-        pl: 1,
-        width: 115,
+        width: 38,
+        height: 38,
         border: 1,
         borderRadius: 5,
+        display: "flex",
         alignItems: "center",
+        justifyContent: "center",
         bgcolor: "#fdf0d5",
         color: "#003049",
       }}
     >
-      {darkMode ? "darkmode" : "lightmode"}
       <IconButton>{darkMode ? <DarkModeIcon /> : <LightModeIcon />}</IconButton>
     </CardActionArea>
   );

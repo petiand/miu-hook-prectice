@@ -1,9 +1,17 @@
 import { CircularProgress, Paper } from "@mui/material";
 import { useCallback, useState } from "react";
 
-export default function AvatarImg(id) {
+export default function AvatarImg({ id }) {
   const [imgIsLoading, setImgIsLoading] = useState(true);
-  const url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id.id}.svg`;
+
+  const findUrl = useCallback(() => {
+    if (isNaN(id)) {
+      return id;
+    } else {
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
+    }
+  }, [id]);
+  const imageUrl = findUrl();
 
   const onLoad = useCallback(() => setImgIsLoading(false), []);
 
@@ -23,9 +31,9 @@ export default function AvatarImg(id) {
       {imgIsLoading && (
         <CircularProgress sx={{ zIndex: 1, position: "absolute" }} />
       )}
-      {url && (
+      {imageUrl && (
         <img
-          src={url}
+          src={imageUrl}
           style={{ height: 115, width: 115 }}
           alt="pokemonimg"
           onLoad={onLoad}

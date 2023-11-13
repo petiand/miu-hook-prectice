@@ -36,6 +36,10 @@ const themeLight = createTheme({
           "& .MuiInputBase-input:focus + fieldset": {
             border: `2px solid #003049`,
           },
+          "& .MuiInput-underline:after": {
+            borderBottomColor: "#003049",
+          },
+
           "& label.Mui-focused": {
             color: "#003049",
           },
