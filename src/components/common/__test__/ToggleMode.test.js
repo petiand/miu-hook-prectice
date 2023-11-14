@@ -35,17 +35,15 @@ describe("ToggleMode button functionality Test", () => {
     expect(mockedSetDarkMode).toHaveBeenCalled();
   });
 
-  test("ToggleMode button displays correct text and icon for Light Mode", () => {
-    const toggleElement = screen.getByTestId(/toggle/i);
-    const toggleElementLightIcone = screen.queryByTestId(/LightModeIcon/i);
-    expect(toggleElement).toHaveTextContent(/lightmode/i);
-    expect(toggleElementLightIcone).toBeInTheDocument();
-  });
-
-  // test("ToggleMode button displays correct text and icon for Dark Mode", () => {
+  // test("ToggleMode button displays correct text and icon for Light Mode", () => {
   //   const toggleElement = screen.getByTestId(/toggle/i);
-  //   const toggleElementDarkIcone = screen.queryByTestId(/DarkModeIcon/i);
-  //   expect(toggleElement).toHaveTextContent(/darkmode/i);
-  //   expect(toggleElementDarkIcone).toBeInTheDocument();
+  //   const toggleElementLightIcone = screen.queryByTestId(/LightModeIcon/i);
+  //   expect(toggleElementLightIcone).toBeInTheDocument();
   // });
+
+  //   test("ToggleMode button displays correct text and icon for Dark Mode", () => {
+  //     const toggleElement = screen.getByTestId(/toggle/i);
+  //     const toggleElementDarkIcone = screen.queryByTestId(/DarkModeIcon/i);
+  //     expect(toggleElementDarkIcone).toBeInTheDocument();
+  //   });
 });

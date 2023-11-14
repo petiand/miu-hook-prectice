@@ -34,7 +34,7 @@ export default function DeletConfirmModal({
             }}
           >
             <BaseButton
-              text="DELETE"
+              text="CONFIRM"
               bgcolor="#e63946"
               onClick={handleDelete}
             />

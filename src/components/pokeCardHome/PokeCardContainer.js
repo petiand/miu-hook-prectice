@@ -1,6 +1,5 @@
-import useGetPokemon from "../../hooks/useGetPokemon";
-
 import React, { useCallback, useState } from "react";
+import useGetPokemon from "../../hooks/useGetPokemon";
 import PokeCard from "../pokeCard/PokeCard";
 import { usePokemon } from "../../hooks/usePokemon";
 

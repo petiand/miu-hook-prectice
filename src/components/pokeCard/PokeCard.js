@@ -58,7 +58,10 @@ export default function PokeCard({
             },
           }}
         >
-          <CardActionArea onClick={handleClickOpenDetail}>
+          <CardActionArea
+            data-testid="action-area"
+            onClick={handleClickOpenDetail}
+          >
             <FavoritIcon
               id={pokemonId}
               name={name}
