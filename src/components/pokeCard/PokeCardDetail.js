@@ -7,7 +7,6 @@ export default function PokeCardDetail({
   id,
   open,
 }) {
-  console.log(pokemon);
   return (
     <Modal
       sx={{ backdropFilter: "blur(3px)" }}
