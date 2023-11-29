@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { usePokemon } from "./usePokemon";
+import { useLocalStorage } from "./useLocalStorage";
+//import storageSingletonInstance from "../services/singleton";
 
 const useEdit = (pokemon) => {
-  const { editedPokemons, setEditedPokemons } = usePokemon();
+  const localStorage = useLocalStorage();
+  const editedPokemons =
+    //storageSingletonInstance.getPropertyByName("edited");
+    localStorage.getItem("edited") || [];
 
   const [currentEditedPokemon, setCurrentEditedPokemon] = useState({
     id: pokemon?.id,
@@ -17,7 +21,7 @@ const useEdit = (pokemon) => {
     },
   });
 
-  const savedEditedPokemon = editedPokemons.find(
+  const savedEditedPokemon = editedPokemons?.find(
     (item) => item.id === pokemon?.id
   );
   const usedForCheck = savedEditedPokemon || pokemon;
@@ -35,13 +39,20 @@ const useEdit = (pokemon) => {
   const handelSubmitEdit = () => {
     if (disable) {
       if (savedEditedPokemon) {
-        setEditedPokemons((prev) =>
-          prev.filter((item) => item.id !== savedEditedPokemon.id)
+        const filtered = editedPokemons.filter(
+          (item) => item.id !== savedEditedPokemon.id
         );
+        localStorage.setItem("edited", filtered);
+        //storageSingletonInstance.setPropertyValue("edited", filtered);
       }
-      setEditedPokemons((prev) => [...prev, currentEditedPokemon]);
+      const current = localStorage.getItem("edited");
+      localStorage.setItem("edited", [...current, currentEditedPokemon]);
+      //storageSingletonInstance.setPropertyValue("edited", [...current, currentEditedPokemon]);
     }
   };
+
+  console.log(usedForCheck);
+
   return {
     currentEditedPokemon,
     setCurrentEditedPokemon,
