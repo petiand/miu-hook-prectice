@@ -50,3 +50,16 @@ test("PokeCard and its elements are displayed on the screen", () => {
   const typeChipElement = screen.getByText(/BUG/i);
   expect(typeChipElement).toBeInTheDocument;
 });
+const isLoading = true;
+test("test the data is not get a circular progress is shown on the screen", () => {
+  <PokeCard
+    pokemonId="1"
+    name="Balbasaur"
+    type="grass"
+    ability="indas"
+    height="100"
+    weight="50"
+    isLoading={isLoading}
+  />;
+  //screen.debug(undefined, 300000);
+});

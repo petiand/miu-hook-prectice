@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 export const Context = createContext();
 
@@ -7,22 +7,6 @@ const PokemonContext = ({ children }) => {
 
   const [favoritList, setFavoritList] = useState([]);
 
-  const [deletedPokemonIds, setDeletedPokemonIds] = useState(
-    JSON.parse(localStorage.getItem("deleted")) ?? []
-  );
-
-  useEffect(() => {
-    localStorage.setItem("deleted", JSON.stringify(deletedPokemonIds));
-  }, [deletedPokemonIds]);
-
-  const [editedPokemons, setEditedPokemons] = useState(
-    JSON.parse(localStorage.getItem("edited")) ?? []
-  );
-
-  useEffect(() => {
-    localStorage.setItem("edited", JSON.stringify(editedPokemons));
-  }, [editedPokemons]);
-
   return (
     <Context.Provider
       value={{
@@ -30,10 +14,6 @@ const PokemonContext = ({ children }) => {
         setValue,
         favoritList,
         setFavoritList,
-        deletedPokemonIds,
-        setDeletedPokemonIds,
-        editedPokemons,
-        setEditedPokemons,
       }}
     >
       {children}
@@ -42,3 +22,12 @@ const PokemonContext = ({ children }) => {
 };
 
 export default PokemonContext;
+
+//creat an abstraction: make sure only one instance, and inject from the aplication layer  for the local storage,
+//singelton designt patter indepandecy injecton
+//singelton
+//be abele to run the coverage!
+//an what it miss, how can cover that is missing
+//analysis
+//lift up the requests, and the storage of the responses catch
+//cancelation token, abort contorolers

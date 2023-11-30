@@ -37,6 +37,7 @@ export default function PokeCard({
   handleDelete,
 }) {
   const color = useGetPokeIcon(type);
+
   return (
     <Grid item xs={3}>
       {pokemonId && (
@@ -49,11 +50,11 @@ export default function PokeCard({
             mt: 8,
             maxWidth: 350,
             Height: 350,
-            bgcolor: color.bgColor,
+            bgcolor: color?.bgColor,
             borderRadius: "10px",
             ":hover": {
               boxShadow: "0 0 100px",
-              color: color.color,
+              color: color?.color,
               scale: "1.1",
             },
           }}

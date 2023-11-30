@@ -1,14 +1,24 @@
 import React, { useCallback, useState } from "react";
 import useGetPokemon from "../../hooks/useGetPokemon";
 import PokeCard from "../pokeCard/PokeCard";
-import { usePokemon } from "../../hooks/usePokemon";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+//import storageSingletonInstance from "../../services/singleton";
 
 export default function PokeCardContainer({ url }) {
   const [pokemon, isLoading] = useGetPokemon({ url: url });
+  const localStorage = useLocalStorage();
 
-  const { deletedPokemonIds, setDeletedPokemonIds } = usePokemon();
+  console.log(pokemon);
 
-  const { editedPokemons } = usePokemon();
+  //const { deletedPokemonIds, setDeletedPokemonIds } = usePokemon();
+
+  const deletedPokemonIds =
+    //storageSingletonInstance.getPropertyByName("deleted");
+    localStorage.getItem("deleted") ?? [];
+
+  const editedPokemons =
+    //storageSingletonInstance.getPropertyByName("edited");
+    localStorage.getItem("edited") || [];
 
   //PokeCardDetailSlide
   const [openDetail, setopenDetail] = useState(false);
@@ -34,7 +44,12 @@ export default function PokeCardContainer({ url }) {
 
   const handleDelete = () => {
     if (pokemon?.id) {
-      setDeletedPokemonIds((prev) => [...prev, pokemon?.id]);
+      //setDeletedPokemonIds((prev) => [...prev, pokemon?.id]);
+      localStorage.setItem("deleted", [...deletedPokemonIds, pokemon?.id]);
+      /* storageSingletonInstance.setPropertyValue("deleted", [
+        ...deletedPokemonIds,
+        pokemon?.id,
+      ]); */
       setopenDeletConfirmModal(false);
       setopenDetail(false);
     }
@@ -65,8 +80,8 @@ export default function PokeCardContainer({ url }) {
           ability={
             usedPokemon?.abilities ? usedPokemon.abilities[0].ability.name : ""
           }
-          height={usedPokemon.height}
-          weight={usedPokemon.weight}
+          // height={usedPokemon.height}
+          // weight={usedPokemon.weight}
           handleClickOpenDetail={handleClickOpenDetail}
           isLoading={isLoading}
           handleCloseDetail={handleCloseDetail}

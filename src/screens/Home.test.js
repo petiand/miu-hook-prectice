@@ -5,42 +5,39 @@ import {
   render,
   screen,
   waitFor,
+  waitForElementToBeRemoved,
 } from "@testing-library/react";
-import HomeCards from "./HomeCards";
+import Home from "./Home";
 import userEvent from "@testing-library/user-event";
 import axios from "axios";
-import PokemonContext from "../../context/PokemonContext";
+import PokemonContext from "../context/PokemonContext";
+import { act } from "react-dom/test-utils";
 
 jest.mock("axios");
 const mockAxios = axios;
 
-//mock axios request
-//spyOn, vs mockfn
-//text what is  rendered IMPORTANT!
-//slid modal from the right/isnted of the pop up modal
-//in the modal delet and edit buttons
-//when delet or edit a new modal with ok/cancel buttons
-//implememt local storage,
-//save the datas in local storage then modify that storage when delete etc
-//also unit and integration tesst
+jest.mock("../hooks/useScrollListener", () => ({
+  __esModule: true,
+  default: jest.fn(),
+}));
 
 const homeCardData = {
   count: 1292,
   next: "pokemon/next20",
   previous: null,
   results: [
-    { name: "Balbasaur", url: 0 },
-    { name: "Pikachu", url: 1 },
-    { name: "Charizard", url: 2 },
-    { name: "Blastois", url: 3 },
-    { name: "Charmalion", url: 4 },
-    { name: "Metwo", url: 5 },
+    { name: "Balbasaur", url: "Balbasaur" },
+    { name: "Pikachu", url: "Pikachu" },
+    { name: "Charizard", url: "Charizard" },
+    { name: "Blastois", url: "Blastois" },
+    { name: "Charmalion", url: "Charmalion" },
+    { name: "Metwo", url: "Metwo" },
   ],
 };
 
 const pokeCardData = (idx) => ({
-  id: idx + 1,
-  species: { name: "pikachuMocked" },
+  id: idx,
+  species: { name: idx },
   types: [{ type: { name: "grass" } }],
   abilities: [{ ability: { name: "indas" } }],
   height: "100",
@@ -55,17 +52,23 @@ const clickOnFirstCardActionArea = async () => {
   const firstCardActionArea = cardActionAreas[0];
   userEvent.click(firstCardActionArea);
 };
-
-beforeEach(() => {
-  render(
-    <PokemonContext>
-      <HomeCards />
-    </PokemonContext>
-  );
+const rerender = () => {
   jest.spyOn(axios, "get").mockResolvedValue({ data: homeCardData });
   render(
     <PokemonContext>
-      <HomeCards />
+      <Home />
+    </PokemonContext>
+  );
+  mockAxios.get.mockImplementation((url) => {
+    return Promise.resolve({ data: pokeCardData(url) });
+  });
+};
+
+beforeEach(() => {
+  jest.spyOn(axios, "get").mockResolvedValue({ data: homeCardData });
+  render(
+    <PokemonContext>
+      <Home />
     </PokemonContext>
   );
   mockAxios.get.mockImplementation((url) => {
@@ -80,9 +83,13 @@ afterEach(() => {
 });
 
 describe("PokeCards screen rendering and interaction test ", () => {
-  test("Test for displaying 'No Results' info when no data is available", () => {
+  test("Test for displaying 'No Results' info when no data is available", async () => {
     cleanup();
-    render(<HomeCards />);
+    render(
+      <PokemonContext>
+        <Home />
+      </PokemonContext>
+    );
     const headerElement = screen.getByRole("heading");
     expect(headerElement).toBeInTheDocument();
   });
@@ -118,7 +125,7 @@ describe("PokeCards screen rendering and interaction test ", () => {
     fireEvent.click(deletConfirmbutton);
     await waitFor(() => {
       const storedData = localStorage.getItem("deleted");
-      expect(storedData).toEqual("[1]");
+      expect(storedData).toEqual('["Balbasaur"]');
 
       //When the user confirm the delete should the modal close
       expect(deletConfirmModal).not.toBeInTheDocument;
@@ -127,7 +134,7 @@ describe("PokeCards screen rendering and interaction test ", () => {
     //After confirming the delete, one card should be removed from the list
     render(
       <PokemonContext>
-        <HomeCards />
+        <Home />
       </PokemonContext>
     );
     const cardElements = screen.getAllByTestId("poke-card");
@@ -147,7 +154,7 @@ describe("PokeCards screen rendering and interaction test ", () => {
 
     //Verify that the input fields have the correct initial text
     const inputs = await screen.findAllByRole("textbox");
-    expect(inputs[0].value).toBe("pikachuMocked");
+    expect(inputs[0].value).toBe("Balbasaur");
     expect(inputs[1].value).toBe("item");
     expect(inputs[2].value).toBe("indas");
     const typeInput = await screen.findByRole("combobox");
@@ -175,10 +182,64 @@ describe("PokeCards screen rendering and interaction test ", () => {
     //After editing the edited pokeCard should be in the screen
     render(
       <PokemonContext>
-        <HomeCards />
+        <Home />
       </PokemonContext>
     );
     const editedCard = screen.getAllByText(/editedName/i);
     expect(editedCard).toBeInTheDocument;
+  });
+
+  //////////////////////////////////////////////////////////////////////////////////////////////
+
+  test("If is a request error, display an alert", async () => {
+    window.alert = jest.fn();
+    jest.spyOn(axios, "get").mockRejectedValue(new Error("Request failed"));
+    await waitFor(() => expect(window.alert).toHaveBeenCalled());
+  });
+
+  test("Should the 'no results found' text disappears when PokeCards are rendered", async () => {
+    await waitForElementToBeRemoved(() => screen.getAllByText(/no results/i));
+  });
+
+  test("Infinite scroll functionality test", async () => {
+    act(() => {
+      fireEvent.scroll(window, { target: { scrollY: 1000 } });
+    });
+    await waitFor(() => {
+      //check API request trigger
+      expect(mockAxios.get).toHaveBeenCalled();
+    });
+    rerender();
+    await waitFor(() => {
+      const cardElements = screen.getAllByTestId("poke-card");
+      //Check if more cards is displayed on the screen
+      expect(cardElements).toHaveLength(12);
+    });
+  });
+
+  test("test the search feature functionality", async () => {
+    const inputElement = screen.getByLabelText(/Type to search/i);
+    fireEvent.change(inputElement, { target: { value: "Balbasaur" } });
+
+    await waitFor(() => {
+      //Chek if only the searched card is displayed
+      const cardElements = screen.getAllByTestId("poke-card");
+      expect(cardElements).toHaveLength(1);
+      //Chek if the searched card is displayed
+      expect(screen.getByText("Balbasaur")).toBeInTheDocument;
+    });
+  });
+
+  test("Display 'No Results Found' text for unmatched search", async () => {
+    const inputElement = screen.getByLabelText(/Type to search/i);
+    fireEvent.change(inputElement, { target: { value: "fakesearch" } });
+    await waitFor(() => {
+      const cardElements = screen.queryAllByTestId("poke-card");
+      //Check if no cards are displayed
+      expect(cardElements).not.toBeInTheDocument;
+      const headerElement = screen.getByRole("heading");
+      //Check if the text is displayed
+      expect(headerElement).toBeInTheDocument();
+    });
   });
 });

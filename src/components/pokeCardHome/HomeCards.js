@@ -14,6 +14,7 @@ export default function HomeCards({ search }) {
     url: currentUrl,
     shouldKeepPreviousData: true,
   });
+
   const onGoNext = useCallback(() => {
     setCurrentUrl(pokemonData?.next);
   }, [pokemonData]);
@@ -26,13 +27,12 @@ export default function HomeCards({ search }) {
         item.name.toLowerCase().includes(search?.toLocaleLowerCase())
       );
       if (filtered && filtered?.length > 0) {
-        const sorted = filtered?.toSorted((a, b) =>
-          a.name.localeCompare(b.name)
-        );
+        const sorted = filtered?.sort((a, b) => a.name.localeCompare(b.name));
         return sorted?.map((i) => i.url);
       }
     } else return pokemonData?.results?.map((i) => i.url);
   }, [pokemonData, search]);
+
   return (
     <>
       <Container
