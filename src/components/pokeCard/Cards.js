@@ -1,4 +1,4 @@
-import { CircularProgress, Grid, Typography } from "@mui/material";
+import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 
 import PokeCardContainer from "../pokeCardHome/PokeCardContainer";
 
@@ -7,7 +7,11 @@ export default function Cards({ list, isLoading }) {
     <>
       {isLoading && <CircularProgress sx={{ mt: 15 }} />}
       {list && list?.length > 0 ? (
-        <Grid container spacing={3}>
+        <Grid
+          container
+          rowSpacing={{ xs: 2, sm: 3, md: 10 }}
+          px={{ xs: 2, sm: 3, md: 15, lg: 20 }}
+        >
           {list?.length > 0 &&
             list.map((item, idx) => {
               return <PokeCardContainer key={idx} url={item} />;

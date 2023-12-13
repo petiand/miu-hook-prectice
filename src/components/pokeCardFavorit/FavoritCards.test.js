@@ -25,3 +25,4 @@ test("Should displayed the favorit cards on the screen", async () => {
     expect(favoritCard).toBeInTheDocument;
   });
 });
+//to be privet  not referecing all true the aplication, just get the item with the get method from my abstraction
