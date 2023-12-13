@@ -9,15 +9,16 @@ export default function TypeChip({ pokeType }) {
     <Chip
       variant="filed"
       sx={{
-        width: 200,
+        width: "90%",
         height: 50,
+        pl: "3px",
         bgcolor: pokeIcon.color,
         borderRadius: 10,
         boxShadow: `0 0 100px ${pokeIcon.color}`,
         ":hover": { filter: "saturate(200%)" },
         "& .MuiChip-label": {
           color: "white",
-          fontSize: 20,
+          fontSize: "120%",
         },
       }}
       avatar={pokeIcon.icon}

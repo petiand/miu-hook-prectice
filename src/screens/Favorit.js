@@ -10,7 +10,6 @@ export default function Favorit() {
       <BackButton to={"/"} />
       <Box
         sx={{
-          my: 5,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -18,17 +17,9 @@ export default function Favorit() {
         }}
       >
         <h1>Favorit Pokemons</h1>
-        <Container
-          maxWidth="xl"
-          sx={{
-            p: 5,
-            textAlign: "center",
-          }}
-        >
-          <Grid container spacing={3}>
-            <FavocirtCards />
-          </Grid>
-        </Container>
+
+        <FavocirtCards />
+
         <ScrollTopBtn />
       </Box>
     </>

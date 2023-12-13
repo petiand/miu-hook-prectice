@@ -22,12 +22,14 @@ export default function PokeCardDetailSlide({
           <Card
             sx={{
               height: "100vh",
-              width: 350,
+              width: 300,
+              maxWidth: "60%",
               position: "fixed",
               right: 0,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              justifyContent: "center",
             }}
           >
             <Typography

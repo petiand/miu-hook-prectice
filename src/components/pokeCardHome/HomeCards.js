@@ -33,17 +33,5 @@ export default function HomeCards({ search }) {
     } else return pokemonData?.results?.map((i) => i.url);
   }, [pokemonData, search]);
 
-  return (
-    <>
-      <Container
-        maxWidth="xl"
-        sx={{
-          textAlign: "center",
-          //bgcolor: "white",
-        }}
-      >
-        <Cards list={usedList} isLoading={isLoading} />
-      </Container>
-    </>
-  );
+  return <Cards list={usedList} isLoading={isLoading} />;
 }

@@ -41,8 +41,8 @@ export default function AvatarImg({ id }) {
       elevation={6}
       sx={{
         display: "flex",
-        width: 170,
-        height: 170,
+        width: { xs: "110px", sm: "160px", md: "160px", lg: "160px" },
+        height: { xs: "110px", sm: "160px", md: "160px", lg: "160px" },
         //  bgcolor:"#F4D590",
         borderRadius: "50%",
         alignItems: "center",
@@ -55,7 +55,7 @@ export default function AvatarImg({ id }) {
       {imageUrl && (
         <img
           src={imageUrl}
-          style={{ height: 115, width: 115 }}
+          style={{ maxHeight: "80%", maxWidth: "80%" }}
           alt="pokemonimg"
           onLoad={onLoad}
         />
