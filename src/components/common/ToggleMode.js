@@ -15,8 +15,8 @@ export default function ToggleMode() {
       data-testid="toggle"
       onClick={toggleTheme}
       sx={{
-        width: 38,
-        height: 38,
+        width: { xs: 25, sm: 30, md: 38, lg: 38 },
+        height: { xs: 25, sm: 30, md: 38, lg: 38 },
         border: 1,
         borderRadius: 5,
         display: "flex",

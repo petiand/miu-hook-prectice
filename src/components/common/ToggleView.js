@@ -10,7 +10,7 @@ export default function ToggleView() {
     setIsTable((prev) => !prev);
   }, [setIsTable]);
   return (
-    <Stack direction="row" alignItems="center">
+    <Stack direction="row" alignItems="center" sx={{ ml: 2 }}>
       <Typography sx={{ color: "#f2e8cf" }}>Card</Typography>
       <Switch
         color="default"

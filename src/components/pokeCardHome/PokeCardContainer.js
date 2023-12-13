@@ -7,7 +7,6 @@ export default function PokeCardContainer({ url }) {
   const [pokemon, isLoading] = useGetPokemon({ url: url });
 
   const pokemons = storageSingletonInstance.getPropertyByName("tableList");
-  console.log(pokemons);
 
   if (pokemon) storageSingletonInstance.setTableList(pokemon);
 

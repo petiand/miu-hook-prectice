@@ -1,9 +1,11 @@
 import { InputAdornment, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
-import PokeBallIcon from "../../assets/images/icons/PokeBallIcon";
 import SearchIcon from "@mui/icons-material/Search";
+import { usePokemon } from "../../hooks/usePokemon";
 
-export default function SearchBar({ setSearch }) {
+export default function SearchBar() {
+  const { setSearch } = usePokemon();
+
   const [localSearch, setLocalSearch] = useState("");
 
   const onChangeSerchBar = (e) => setLocalSearch(e.target.value);
@@ -28,7 +30,7 @@ export default function SearchBar({ setSearch }) {
           transition: "width 1s",
           "@media (min-width: 500px)": {
             "&:focus-within": {
-              width: 500,
+              width: 300,
             },
           },
           "& .MuiInput-underline:before": {

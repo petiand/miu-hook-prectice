@@ -1,4 +1,4 @@
-import { Box, Container, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 
 import FavocirtCards from "../components/pokeCardFavorit/FavoritCards";
 import BackButton from "../components/common/BackButton";

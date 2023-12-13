@@ -6,8 +6,12 @@ import ToggleMode from "./ToggleMode";
 
 import MenuIcon from "./MenuIcon";
 import ToggleView from "./ToggleView";
+import SearchBar from "./SearachBar";
+import useGetScreenWidth from "../../hooks/useGetScreenWidth";
 
 export default function Header() {
+  const screenwWidth = useGetScreenWidth();
+  console.log(screenwWidth);
   return (
     <>
       <Toolbar
@@ -39,10 +43,10 @@ export default function Header() {
             }}
           >
             <Typography
-              variant="h5"
+              //variant="h5"
               sx={{
                 color: "#f2e8cf",
-
+                fontSize: { xs: 15, sm: 20, md: 30, lg: 30 },
                 mr: 1,
               }}
             >
@@ -51,8 +55,17 @@ export default function Header() {
           </CardActionArea>
           <ToggleMode />
         </Box>
-        <ToggleView />
-        <MenuIcon />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {screenwWidth > 600 && <SearchBar />}
+          <ToggleView />
+          <MenuIcon />
+        </Box>
       </Toolbar>
     </>
   );

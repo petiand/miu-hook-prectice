@@ -6,9 +6,12 @@ import ContextValue from "../components/common/ContextValue";
 import HomeCards from "../components/pokeCardHome/HomeCards";
 import PokemonTable from "../components/common/PokemonTable";
 import { usePokemon } from "../hooks/usePokemon";
+import useGetScreenWidth from "../hooks/useGetScreenWidth";
 
 export default function Home() {
   const [search, setSearch] = useState("");
+
+  const screenwWidth = useGetScreenWidth();
 
   const { isTable } = usePokemon();
   // const isTable = false;
@@ -27,7 +30,7 @@ export default function Home() {
               justifyContent: "center",
             }}
           >
-            <SearchBar search={search} setSearch={setSearch} />
+            {screenwWidth < 600 && <SearchBar setSearch={setSearch} />}
             <ContextValue
               color="#fdf0d5"
               bgcolor="#003049"

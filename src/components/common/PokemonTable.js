@@ -1,17 +1,16 @@
 import { DataGrid } from "@mui/x-data-grid";
+import { DataGridPremium } from "@mui/x-data-grid-premium";
 import storageSingletonInstance from "../../services/singleton";
-import { useState } from "react";
 import { Box } from "@mui/material";
 
 export default function PokemonTable() {
-  //const [pokemons, setPokemons] = useState([]);
   const pokemons = storageSingletonInstance.getPropertyByName("tableList");
   console.log(pokemons);
   const columns = [
-    { field: "name", headerName: "Name", width: 150 },
+    { field: "name", headerName: "Name", width: 150, editable: true },
     { field: "exp", headerName: "Exp", width: 50 },
-    { field: "ability", headerName: "Ability", width: 150 },
-    { field: "type", headerName: "Type", width: 100, defaultGroupOrder: 0 },
+    { field: "ability", headerName: "Ability", width: 150, editable: true },
+    { field: "type", headerName: "Type", width: 100 },
   ];
 
   const rows = pokemons?.map((row) => ({
@@ -24,8 +23,16 @@ export default function PokemonTable() {
 
   return (
     <Box sx={{ display: "flex", justifyContent: "center", mt: 10 }}>
-      <Box sx={{ height: 300, width: 500 }}>
-        <DataGrid rows={rows} columns={columns} />
+      <Box sx={{ height: 300, width: "80%" }}>
+        <DataGridPremium
+          initialState={{
+            rowGrouping: {
+              model: ["type"],
+            },
+          }}
+          rows={rows}
+          columns={columns}
+        />
       </Box>
     </Box>
   );

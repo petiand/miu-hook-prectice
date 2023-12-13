@@ -4,8 +4,11 @@ import Cards from "../pokeCard/Cards";
 
 import { Container } from "@mui/material";
 import useScrollListener from "../../hooks/useScrollListener";
+import { usePokemon } from "../../hooks/usePokemon";
 
-export default function HomeCards({ search }) {
+export default function HomeCards() {
+  const { search } = usePokemon();
+
   const [currentUrl, setCurrentUrl] = useState(
     "https://pokeapi.co/api/v2/pokemon"
   );
