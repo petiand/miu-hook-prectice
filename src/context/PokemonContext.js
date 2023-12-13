@@ -7,6 +7,10 @@ const PokemonContext = ({ children }) => {
 
   const [favoritList, setFavoritList] = useState([]);
 
+  const [isTable, setIsTable] = useState(false);
+
+  const [search, setSearch] = useState("");
+
   return (
     <Context.Provider
       value={{
@@ -14,6 +18,10 @@ const PokemonContext = ({ children }) => {
         setValue,
         favoritList,
         setFavoritList,
+        isTable,
+        setIsTable,
+        search,
+        setSearch,
       }}
     >
       {children}

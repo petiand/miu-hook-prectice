@@ -39,17 +39,27 @@ export default function PokeCard({
   const color = useGetPokeIcon(type);
 
   return (
-    <Grid item xs={3}>
+    <Grid
+      item
+      sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+      xs={6}
+      sm={4}
+      lg={3}
+    >
       {pokemonId && (
         <Card
           data-testid="poke-card"
           variant="outlined"
           sx={{
             border: "none",
-            m: 2,
-            mt: 8,
-            maxWidth: 350,
-            Height: 350,
+            width: {
+              xs: "150px",
+              sm: "200px",
+              md: "200px",
+              lg: "220px",
+              xl: "250px",
+            },
+            height: { xs: "250px", sm: "330px", md: "330px", lg: "330px" },
             bgcolor: color?.bgColor,
             borderRadius: "10px",
             ":hover": {
@@ -93,13 +103,6 @@ export default function PokeCard({
       )}
       {!isLoading && pokemon && (
         <>
-          {/* <PokeCardDetail
-            pokemon={pokemon}
-            anchorEl={anchorEl}
-            handleClose={handleClose}
-            id={id}
-            open={open}
-          /> */}
           <PokeCardDetailSlide
             open={openDetail}
             pokemon={pokemon}

@@ -1,24 +1,19 @@
 import React, { useCallback, useState } from "react";
 import useGetPokemon from "../../hooks/useGetPokemon";
 import PokeCard from "../pokeCard/PokeCard";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
-//import storageSingletonInstance from "../../services/singleton";
+import storageSingletonInstance from "../../services/singleton";
 
 export default function PokeCardContainer({ url }) {
   const [pokemon, isLoading] = useGetPokemon({ url: url });
-  const localStorage = useLocalStorage();
 
-  console.log(pokemon);
+  const pokemons = storageSingletonInstance.getPropertyByName("tableList");
 
-  //const { deletedPokemonIds, setDeletedPokemonIds } = usePokemon();
+  if (pokemon) storageSingletonInstance.setTableList(pokemon);
 
   const deletedPokemonIds =
-    //storageSingletonInstance.getPropertyByName("deleted");
-    localStorage.getItem("deleted") ?? [];
+    storageSingletonInstance.getPropertyByName("deleted");
 
-  const editedPokemons =
-    //storageSingletonInstance.getPropertyByName("edited");
-    localStorage.getItem("edited") || [];
+  const editedPokemons = storageSingletonInstance.getPropertyByName("edited");
 
   //PokeCardDetailSlide
   const [openDetail, setopenDetail] = useState(false);
@@ -44,12 +39,7 @@ export default function PokeCardContainer({ url }) {
 
   const handleDelete = () => {
     if (pokemon?.id) {
-      //setDeletedPokemonIds((prev) => [...prev, pokemon?.id]);
-      localStorage.setItem("deleted", [...deletedPokemonIds, pokemon?.id]);
-      /* storageSingletonInstance.setPropertyValue("deleted", [
-        ...deletedPokemonIds,
-        pokemon?.id,
-      ]); */
+      storageSingletonInstance.setDeleted(pokemon.id);
       setopenDeletConfirmModal(false);
       setopenDetail(false);
     }
@@ -80,8 +70,6 @@ export default function PokeCardContainer({ url }) {
           ability={
             usedPokemon?.abilities ? usedPokemon.abilities[0].ability.name : ""
           }
-          // height={usedPokemon.height}
-          // weight={usedPokemon.weight}
           handleClickOpenDetail={handleClickOpenDetail}
           isLoading={isLoading}
           handleCloseDetail={handleCloseDetail}
