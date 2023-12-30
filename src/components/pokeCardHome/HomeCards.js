@@ -2,7 +2,6 @@ import React, { useCallback, useMemo, useState } from "react";
 import useGetPokemon from "../../hooks/useGetPokemon";
 import Cards from "../pokeCard/Cards";
 
-import { Container } from "@mui/material";
 import useScrollListener from "../../hooks/useScrollListener";
 import { usePokemon } from "../../hooks/usePokemon";
 

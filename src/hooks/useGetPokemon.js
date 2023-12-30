@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useGetPokemon = ({ url, shouldKeepPreviousData = false }) => {
+const useGetPokemon = ({ url, shouldKeepPreviousData = false, limit = 20 }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -16,6 +16,9 @@ const useGetPokemon = ({ url, shouldKeepPreviousData = false }) => {
       try {
         const response = await axios.get(url, {
           signal: cancellationToken,
+          params: {
+            limit,
+          },
         });
         if (shouldKeepPreviousData && data !== null) {
           const currentResults = [...data?.results, ...response?.data?.results];
